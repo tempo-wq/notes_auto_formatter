@@ -1,0 +1,5 @@
+ .smart-notes-definition-term { font-weight: 600; color: var(--text-accent); }
+.smart-notes-important { background-color: color-mix(in srgb, var(--text-accent) 18%, transparent);
+  box-shadow: inset 0 -1px 0 var(--text-accent); border-radius: 2px; }
+.smart-notes-example { font-style: italic; color: var(--text-muted); }
+.smart-notes-key-term { text-decoration: underline; text-decoration-color: var(--text-accent); text-underline-offset: 3px; }

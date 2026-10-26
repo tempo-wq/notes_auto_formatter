@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-26T19:25:06.906Z",
+  "node": "v24.22.1",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "cpu": "Apple M5",
+  "scope": "Synthetic rules, segmentation and resolver only; excludes Markdown parser, editor, UI and memory.",
+  "rows": [
+    {
+      "name": "fragment-300",
+      "characters": 300,
+      "words": 36,
+      "runs": 1000,
+      "p50ms": 0.008834000000007336,
+      "p95ms": 0.015542000000010603
+    },
+    {
+      "name": "fragment-2000",
+      "characters": 2000,
+      "words": 243,
+      "runs": 1000,
+      "p50ms": 0.023500000000012733,
+      "p95ms": 0.04374999999998863
+    },
+    {
+      "name": "full-pass-1000",
+      "characters": 8669,
+      "words": 1000,
+      "runs": 30,
+      "p50ms": 0.14812499999999318,
+      "p95ms": 0.1771669999999972
+    },
+    {
+      "name": "full-pass-10000",
+      "characters": 86669,
+      "words": 10000,
+      "runs": 30,
+      "p50ms": 1.3417089999999803,
+      "p95ms": 1.5087500000000205
+    },
+    {
+      "name": "full-pass-100000",
+      "characters": 866669,
+      "words": 100000,
+      "runs": 30,
+      "p50ms": 13.408541000000014,
+      "p95ms": 17.388207999999963
+    }
+  ]
+}
