@@ -7,12 +7,14 @@ import { editorExtension, highlights, Diagnostics } from '../src/editor/editorEx
 import { defaults } from '../src/analysis/types';
 // Runs the real controller and CodeMirror state with a simulated viewport,
 // without claiming to exercise browser layout or Obsidian's host parser.
-function harness(text: string) {
+function harness(text: string, options: { unparsed?: boolean; from?: number; identity?: string } = {}) {
     vi.useFakeTimers();
     const stats: Diagnostics = { analyzed: 0, cacheHits: 0, skippedLong: 0, skippedUnparsed: 0 };
-    const extensions = editorExtension(() => defaults, () => 'test', stats);
+    let identity = options.identity ?? 'test';
+    const extensions = editorExtension(() => defaults, () => identity, stats);
     let state = EditorState.create({ doc: text, extensions: [highlights, markdown()] });
-    ensureSyntaxTree(state, state.doc.length, 100);
+    if (!options.unparsed) ensureSyntaxTree(state, state.doc.length, 100);
+    let viewport = { from: options.from ?? 0, to: state.doc.length };
     let controller: {
         update(u: ViewUpdate): void;
         destroy(): void;
@@ -20,8 +22,8 @@ function harness(text: string) {
     };
     const view = {
         get state() { return state; },
-        get viewport() { return { from: 0, to: state.doc.length }; },
-        get visibleRanges() { return [{ from: 0, to: state.doc.length }]; },
+        get viewport() { return {from: Math.min(viewport.from,state.doc.length), to: Math.min(viewport.to,state.doc.length)}; },
+        get visibleRanges() { return [this.viewport]; },
         composing: false,
         dispatch(spec: TransactionSpec) {
             const startState = state, tr = state.update(spec);
@@ -33,7 +35,10 @@ function harness(text: string) {
     controller = (extensions[1] as unknown as {
         create(v: EditorView): typeof controller;
     }).create(view as unknown as EditorView);
-    return { view, controller, stats };
+    return { view, controller, stats,
+        move(from: number, to: number, geometryOnly = false) { viewport = {from, to}; controller.update({startState: state, state, docChanged: false, viewportChanged: !geometryOnly, geometryChanged: true, transactions: []} as unknown as ViewUpdate); },
+        switchFile(next: string) { identity = next; view.dispatch({}); }
+    };
 }
 afterEach(() => vi.useRealTimers());
 it('schedules and renders both a definition and important statement', async () => {
@@ -74,4 +79,42 @@ it('leaves no periodic analyzer work after completion', async () => {
     expect(h.stats.analyzed).toBe(count);
     expect(vi.getTimerCount()).toBe(0);
     h.controller.destroy();
+});
+
+it('opens an existing document whose Markdown tree has not reached the visible range', async () => {
+    const prefix = 'Обычное пояснение.\n\n'.repeat(10000);
+    const h = harness(prefix + 'Интеграл это обобщение суммы.', {unparsed:true, from:prefix.length});
+    await vi.advanceTimersByTimeAsync(5000);
+    expect(h.view.state.field(highlights).items.some(c => c.from === prefix.length)).toBe(true);
+    h.controller.destroy();
+});
+it('resumes when a previously hidden editor becomes visible without a document edit', async () => {
+    const h = harness('Интеграл это обобщение суммы.');
+    h.view.composing = true;
+    await vi.advanceTimersByTimeAsync(1000);
+    h.view.composing = false;
+    h.move(0, h.view.state.doc.length, true);
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(h.view.state.field(highlights).items).toHaveLength(1);
+    h.controller.destroy();
+});
+it.each(['', 'Обычное пояснение.'])('opens safely with no highlights: %s', async text => {
+    const h = harness(text); await vi.advanceTimersByTimeAsync(1000);
+    expect(h.view.state.field(highlights).items).toEqual([]); h.controller.destroy();
+});
+it('restores after switching a file identity and after scrolling', async () => {
+    const text = 'Интеграл это сумма.\n\nПроизводная это предел.';
+    const h = harness(text); await vi.advanceTimersByTimeAsync(1000);
+    h.switchFile('second'); await vi.advanceTimersByTimeAsync(1000);
+    expect(h.view.state.field(highlights).items).toHaveLength(2);
+    h.move(text.indexOf('Производная'),text.length); await vi.advanceTimersByTimeAsync(1000);
+    expect(h.controller.decorations.size).toBe(1); h.controller.destroy();
+});
+it('can reopen the same contents and isolate concurrent editors', async () => {
+    const a=harness('Интеграл это сумма.'), b=harness('Производная это предел.');
+    await vi.advanceTimersByTimeAsync(1000); a.controller.destroy();
+    const reopened=harness('Интеграл это сумма.'); await vi.advanceTimersByTimeAsync(1000);
+    expect(b.view.state.field(highlights).items).toHaveLength(1);
+    expect(reopened.view.state.field(highlights).items).toHaveLength(1);
+    b.controller.destroy(); reopened.controller.destroy();
 });

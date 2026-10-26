@@ -1,6 +1,6 @@
 import { StateEffect, StateField, RangeSetBuilder } from '@codemirror/state';
 import { EditorView, ViewPlugin, ViewUpdate, Decoration, DecorationSet } from '@codemirror/view';
-import { syntaxTree } from '@codemirror/language';
+import { syntaxTree, syntaxTreeAvailable, forceParsing } from '@codemirror/language';
 import { analyze } from '../analysis/RuleEngine';
 import { segment } from '../analysis/TextSegmenter';
 import { resolve } from '../analysis/HighlightResolver';
@@ -66,10 +66,13 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
             generation = 0;
             destroyed = false;
             identity: unknown;
+            parsing = false;
+            parseAttempts = 0;
             // Bounded per-editor content cache; coordinates stay local until application.
             cache = new Map<string, Candidate[]>();
             constructor(readonly view: EditorView) { this.identity = getIdentity(view); this.schedule(); }
-            schedule() {
+            schedule(resetAttempts = true) {
+                if (resetAttempts) this.parseAttempts = 0;
                 clearTimeout(this.timer);
                 const generation = ++this.generation;
                 this.timer = setTimeout(() => this.run(generation), profiles[getSettings().profile].delay);
@@ -79,6 +82,17 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                     return;
                 if (this.view.composing)
                     return;
+                // The host parser may stop before existing content is available.
+                // Advance it only off the input path, with a finite retry budget.
+                if (!syntaxTreeAvailable(this.view.state, this.view.viewport.to)) {
+                    this.parsing = true;
+                    try { forceParsing(this.view, this.view.viewport.to, 5); }
+                    finally { this.parsing = false; }
+                    if (!syntaxTreeAvailable(this.view.state, this.view.viewport.to)) {
+                        if (++this.parseAttempts < 8) this.schedule(false);
+                        return;
+                    }
+                }
                 const state = this.view.state, revision = state.field(highlights).revision;
                 const identity = this.identity;
                 const settings = getSettings(), max = profiles[settings.profile].max;
@@ -140,6 +154,7 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                 step();
             }
             update(update: ViewUpdate) {
+                if (this.parsing) return;
                 if (getIdentity(this.view) !== this.identity) {
                     this.identity = getIdentity(this.view);
                     this.cache.clear();
@@ -152,9 +167,9 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                     }, 0);
                     return;
                 }
-                if (update.docChanged || update.viewportChanged || syntaxTree(update.startState) !== syntaxTree(update.state) || update.transactions.some(t => t.effects.some(e => e.is(reset))))
+                if (update.docChanged || update.viewportChanged || update.geometryChanged || update.focusChanged || syntaxTree(update.startState) !== syntaxTree(update.state) || update.transactions.some(t => t.effects.some(e => e.is(reset))))
                     this.schedule();
-                if (update.docChanged || update.viewportChanged || update.startState.field(highlights) !== update.state.field(highlights))
+                if (update.docChanged || update.viewportChanged || update.geometryChanged || update.startState.field(highlights) !== update.state.field(highlights))
                     this.render();
             }
             render() {

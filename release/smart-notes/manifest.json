@@ -1,1 +1,9 @@
-{"id":"smart-notes","name":"Smart Notes","version":"0.1.0","minAppVersion":"1.8.7","description":"Local, conservative Russian study-note highlighting without changing Markdown.","author":"Smart Notes","isDesktopOnly":false}
+{
+  "id": "smart-notes",
+  "name": "Smart Notes",
+  "version": "0.1.1",
+  "minAppVersion": "1.8.7",
+  "description": "Local, conservative Russian study-note highlighting without changing Markdown.",
+  "author": "Smart Notes",
+  "isDesktopOnly": false
+}

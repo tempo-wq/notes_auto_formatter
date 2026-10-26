@@ -20,6 +20,14 @@ export default class SmartNotes extends Plugin {
                 constructor(readonly view: EditorView) { views.add(view); }
                 destroy() { views.delete(this.view); }
             })]);
+        this.addCommand({
+            id: 'reanalyze-current-note', name: 'Reanalyze current note',
+            editorCallback: (_editor, active) => {
+                for (const view of this.views)
+                    if (view.state.field(editorInfoField, false)?.file?.path === active.file?.path)
+                        resetAnalysis(view);
+            }
+        });
         this.addSettingTab(new SmartNotesSettings(this.app, this));
     }
     async save() {
