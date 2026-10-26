@@ -1,0 +1,401 @@
+{
+  "name": "textrank2",
+  "status": "ok",
+  "quality_policy": "silver diagnostic only; primary gold metrics unavailable",
+  "initialization_ms": 0.4010419361293316,
+  "rss_after_initialization_bytes": 23920640,
+  "first_inference_ms": 792.3250829335302,
+  "quality": {
+    "development": {
+      "term_exact": {
+        "tp": 2,
+        "fp": 68,
+        "fn": 12,
+        "precision": 0.02857142857142857,
+        "recall": 0.14285714285714285,
+        "f1": 0.047619047619047616,
+        "macro_f1": 0.047619047619047616,
+        "per_category": {
+          "TERM": {
+            "tp": 2,
+            "fp": 68,
+            "fn": 12,
+            "precision": 0.02857142857142857,
+            "recall": 0.14285714285714285,
+            "f1": 0.047619047619047616
+          }
+        },
+        "n": 14
+      },
+      "term_overlap": {
+        "tp": 8,
+        "fp": 62,
+        "fn": 6,
+        "precision": 0.11428571428571428,
+        "recall": 0.5714285714285714,
+        "f1": 0.19047619047619047,
+        "macro_f1": 0.19047619047619047,
+        "per_category": {
+          "TERM": {
+            "tp": 8,
+            "fp": 62,
+            "fn": 6,
+            "precision": 0.11428571428571428,
+            "recall": 0.5714285714285714,
+            "f1": 0.19047619047619047
+          }
+        },
+        "n": 14
+      },
+      "taxonomy_exact": {
+        "tp": 0,
+        "fp": 70,
+        "fn": 28,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "macro_f1": 0.0,
+        "per_category": {
+          "DEFINITION_TERM": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 14,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "DEFINITION": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 14,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "IMPORTANT": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "EXAMPLE": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "KEY_TERM": {
+            "tp": 0,
+            "fp": 70,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0
+          }
+        },
+        "n": 14
+      },
+      "ranking": {
+        "mrr_at_5": 0.03571428571428571,
+        "precision_at_3": 0.0,
+        "n": 14,
+        "order": "adapter output order; no cross-algorithm score calibration"
+      }
+    },
+    "test": {
+      "term_exact": {
+        "tp": 0,
+        "fp": 30,
+        "fn": 6,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "macro_f1": 0.0,
+        "per_category": {
+          "TERM": {
+            "tp": 0,
+            "fp": 30,
+            "fn": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "n": 6
+      },
+      "term_overlap": {
+        "tp": 1,
+        "fp": 29,
+        "fn": 5,
+        "precision": 0.03333333333333333,
+        "recall": 0.16666666666666666,
+        "f1": 0.05555555555555555,
+        "macro_f1": 0.05555555555555555,
+        "per_category": {
+          "TERM": {
+            "tp": 1,
+            "fp": 29,
+            "fn": 5,
+            "precision": 0.03333333333333333,
+            "recall": 0.16666666666666666,
+            "f1": 0.05555555555555555
+          }
+        },
+        "n": 6
+      },
+      "taxonomy_exact": {
+        "tp": 0,
+        "fp": 30,
+        "fn": 12,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "macro_f1": 0.0,
+        "per_category": {
+          "DEFINITION_TERM": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "DEFINITION": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "IMPORTANT": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "EXAMPLE": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "KEY_TERM": {
+            "tp": 0,
+            "fp": 30,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0
+          }
+        },
+        "n": 6
+      },
+      "ranking": {
+        "mrr_at_5": 0.0,
+        "precision_at_3": 0.0,
+        "n": 6,
+        "order": "adapter output order; no cross-algorithm score calibration"
+      },
+      "source_bootstrap_f1_95": [
+        0,
+        0
+      ]
+    },
+    "challenge": {
+      "term_exact": {
+        "tp": 2,
+        "fp": 48,
+        "fn": 1,
+        "precision": 0.04,
+        "recall": 0.6666666666666666,
+        "f1": 0.07547169811320754,
+        "macro_f1": 0.07547169811320754,
+        "per_category": {
+          "TERM": {
+            "tp": 2,
+            "fp": 48,
+            "fn": 1,
+            "precision": 0.04,
+            "recall": 0.6666666666666666,
+            "f1": 0.07547169811320754
+          }
+        },
+        "n": 13
+      },
+      "term_overlap": {
+        "tp": 3,
+        "fp": 47,
+        "fn": 0,
+        "precision": 0.06,
+        "recall": 1.0,
+        "f1": 0.11320754716981132,
+        "macro_f1": 0.11320754716981132,
+        "per_category": {
+          "TERM": {
+            "tp": 3,
+            "fp": 47,
+            "fn": 0,
+            "precision": 0.06,
+            "recall": 1.0,
+            "f1": 0.11320754716981132
+          }
+        },
+        "n": 13
+      },
+      "taxonomy_exact": {
+        "tp": 1,
+        "fp": 49,
+        "fn": 6,
+        "precision": 0.02,
+        "recall": 0.14285714285714285,
+        "f1": 0.03508771929824561,
+        "macro_f1": 0.00980392156862745,
+        "per_category": {
+          "DEFINITION_TERM": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "DEFINITION": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "IMPORTANT": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "EXAMPLE": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "KEY_TERM": {
+            "tp": 1,
+            "fp": 49,
+            "fn": 0,
+            "precision": 0.02,
+            "recall": 1.0,
+            "f1": 0.0392156862745098
+          }
+        },
+        "n": 13
+      },
+      "ranking": {
+        "mrr_at_5": 0.19444444444444442,
+        "precision_at_3": 0.1111111111111111,
+        "n": 3,
+        "order": "adapter output order; no cross-algorithm score calibration"
+      }
+    }
+  },
+  "latency": [
+    {
+      "words": 100,
+      "runs": 5,
+      "p50_ms": 0.5221248138695955,
+      "p95_ms": 0.5924159195274115,
+      "p95_method": "nearest-rank; with n=5 this is max, very uncertain",
+      "cpu_seconds": 0.0072232480000000154,
+      "samples_ms": [
+        0.5143340677022934,
+        0.5149170756340027,
+        0.5221248138695955,
+        0.5759589839726686,
+        0.5924159195274115
+      ]
+    },
+    {
+      "words": 500,
+      "runs": 5,
+      "p50_ms": 0.8214591071009636,
+      "p95_ms": 0.8959157858043909,
+      "p95_method": "nearest-rank; with n=5 this is max, very uncertain",
+      "cpu_seconds": 0.009482880000000027,
+      "samples_ms": [
+        0.8091661147773266,
+        0.8205000776797533,
+        0.8214591071009636,
+        0.8364168461412191,
+        0.8959157858043909
+      ]
+    },
+    {
+      "words": 2000,
+      "runs": 5,
+      "p50_ms": 2.8643328696489334,
+      "p95_ms": 7.249417016282678,
+      "p95_method": "nearest-rank; with n=5 this is max, very uncertain",
+      "cpu_seconds": 0.023587583999999995,
+      "samples_ms": [
+        2.7659169863909483,
+        2.806208096444607,
+        2.8643328696489334,
+        2.904833061620593,
+        7.249417016282678
+      ]
+    },
+    {
+      "words": 10000,
+      "runs": 5,
+      "p50_ms": 20.212125033140182,
+      "p95_ms": 24.56208411604166,
+      "p95_method": "nearest-rank; with n=5 this is max, very uncertain",
+      "cpu_seconds": 0.10976868799999989,
+      "samples_ms": [
+        19.543292000889778,
+        20.019458141177893,
+        20.212125033140182,
+        20.68454190157354,
+        24.56208411604166
+      ]
+    }
+  ],
+  "total_worker_seconds": 1.0774762500077486,
+  "cpu_seconds": 0.532851536,
+  "peak_sampled_rss_bytes": 82608128,
+  "self_peak_rss_bytes": 82690048,
+  "total_process_wall_seconds": 1.1209920840337873,
+  "stderr": "",
+  "fresh_process_probes": [
+    {
+      "initialization_ms": 0.4010419361293316,
+      "first_inference_ms": 792.3250829335302,
+      "total_process_seconds": 1.1209920840337873
+    },
+    {
+      "initialization_ms": 0.801249872893095,
+      "first_inference_ms": 118.35008393973112,
+      "total_process_seconds": 0.1543173750396818
+    },
+    {
+      "initialization_ms": 0.8187079802155495,
+      "first_inference_ms": 100.98979203030467,
+      "total_process_seconds": 0.13751137489452958
+    }
+  ],
+  "primary_gold_metrics": null,
+  "primary_gold_reason": "No independently human-validated gold; silver diagnostic only."
+}

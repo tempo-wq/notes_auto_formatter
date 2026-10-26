@@ -4,3 +4,10 @@
 /.benchmark.mjs
 .DS_Store
 *.log
+
+/research/.venv/
+/research/cache/
+/research/models/
+/research/results/raw/
+__pycache__/
+*.pyc

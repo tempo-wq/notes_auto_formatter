@@ -1,0 +1,33 @@
+{"id": "wiki_20446_lead", "source_id": "wiki_20446", "annotations": []}
+{"id": "wiki_365821_lead", "source_id": "wiki_365821", "annotations": []}
+{"id": "wiki_25898_lead", "source_id": "wiki_25898", "annotations": []}
+{"id": "wiki_1900_lead", "source_id": "wiki_1900", "annotations": []}
+{"id": "wiki_42280_lead", "source_id": "wiki_42280", "annotations": []}
+{"id": "wiki_29983_lead", "source_id": "wiki_29983", "annotations": []}
+{"id": "wiki_5681_lead", "source_id": "wiki_5681", "annotations": []}
+{"id": "wiki_186974_lead", "source_id": "wiki_186974", "annotations": []}
+{"id": "wiki_2741_lead", "source_id": "wiki_2741", "annotations": []}
+{"id": "wiki_10685_lead", "source_id": "wiki_10685", "annotations": []}
+{"id": "wiki_7841_lead", "source_id": "wiki_7841", "annotations": []}
+{"id": "wiki_201799_lead", "source_id": "wiki_201799", "annotations": []}
+{"id": "wiki_3397404_lead", "source_id": "wiki_3397404", "annotations": []}
+{"id": "wiki_164924_lead", "source_id": "wiki_164924", "annotations": []}
+{"id": "wiki_36616_lead", "source_id": "wiki_36616", "annotations": []}
+{"id": "wiki_94341_lead", "source_id": "wiki_94341", "annotations": []}
+{"id": "wiki_3024868_lead", "source_id": "wiki_3024868", "annotations": []}
+{"id": "wiki_2681_lead", "source_id": "wiki_2681", "annotations": []}
+{"id": "wiki_40095_lead", "source_id": "wiki_40095", "annotations": []}
+{"id": "wiki_293181_lead", "source_id": "wiki_293181", "annotations": []}
+{"id": "control_00", "source_id": "authored_controls", "annotations": [{"start": 0, "end": 8, "label": "DEFINITION_TERM", "score": 0.95, "text": "Интеграл"}]}
+{"id": "control_01", "source_id": "authored_controls", "annotations": [{"start": 0, "end": 17, "label": "DEFINITION_TERM", "score": 0.95, "text": "Градиентный спуск"}]}
+{"id": "control_02", "source_id": "authored_controls", "annotations": [{"start": 0, "end": 32, "label": "IMPORTANT", "score": 0.95, "text": "Важно: сохранить исходный текст."}]}
+{"id": "control_03", "source_id": "authored_controls", "annotations": [{"start": 0, "end": 44, "label": "EXAMPLE", "score": 0.95, "text": "Например, производная постоянной равна нулю."}]}
+{"id": "control_04", "source_id": "authored_controls", "annotations": []}
+{"id": "control_05", "source_id": "authored_controls", "annotations": []}
+{"id": "control_06", "source_id": "authored_controls", "annotations": []}
+{"id": "control_07", "source_id": "authored_controls", "annotations": []}
+{"id": "control_08", "source_id": "authored_controls", "annotations": [{"start": 0, "end": 7, "label": "DEFINITION_TERM", "score": 0.95, "text": "Обсудим"}]}
+{"id": "control_09", "source_id": "authored_controls", "annotations": [{"start": 0, "end": 47, "label": "IMPORTANT", "score": 0.95, "text": "Следует помнить: деление на ноль не определено."}]}
+{"id": "control_10", "source_id": "authored_controls", "annotations": [{"start": 0, "end": 45, "label": "EXAMPLE", "score": 0.95, "text": "Рассмотрим пример: число два является чётным."}]}
+{"id": "control_11", "source_id": "authored_controls", "annotations": []}
+{"id": "control_12", "source_id": "authored_controls", "annotations": [{"start": 27, "end": 44, "label": "KEY_TERM", "score": 0.9, "text": "электрический ток"}]}
