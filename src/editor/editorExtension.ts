@@ -83,7 +83,7 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                 this.abort.abort();
                 this.abort = new AbortController();
                 const generation = ++this.generation;
-                this.timer = setTimeout(() => this.run(generation), profiles[getSettings().profile].delay);
+                this.timer = setTimeout(() => this.run(generation), resetAttempts ? profiles[getSettings().profile].delay : Math.min(100, profiles[getSettings().profile].delay));
             }
             run(generation: number) {
                 if (this.destroyed || generation !== this.generation)
@@ -97,7 +97,8 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                     try { forceParsing(this.view, this.view.viewport.to, 5); }
                     finally { this.parsing = false; }
                     if (!syntaxTreeAvailable(this.view.state, this.view.viewport.to)) {
-                        if (++this.parseAttempts < 8) this.schedule(false);
+                        const limit = this.view.state.doc.length > 100000 ? 32 : 8;
+                        if (++this.parseAttempts < limit) this.schedule(false);
                         return;
                     }
                 }
@@ -135,7 +136,7 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                     if (blocked) {
                         const text = state.doc.sliceString(job.from, job.to);
                         let context = '';
-                        if (advanced) {
+                        {
                             const line = state.doc.lineAt(job.from);
                             if (line.number > 1) {
                                 const previous = state.doc.line(line.number - 1);
@@ -147,7 +148,10 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                         }
                         // Context and stage are part of the key; no stale context reuse.
                         const key = JSON.stringify([text, blocked, context, settings, advanced]);
-                        let candidates = this.cache.get(key);
+                        // Never downgrade a completed advanced result during a
+                        // geometry/viewport refresh of unchanged text and context.
+                        let candidates = !advanced ? this.cache.get(JSON.stringify([text, blocked, context, settings, true])) : undefined;
+                        candidates ??= this.cache.get(key);
                         if (candidates) stats.cacheHits++;
                         if (!candidates) {
                             stats.analyzed++;
@@ -166,10 +170,16 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                             this.cache.set(key, candidates);
                         }
                         if (!current()) return;
-                        this.view.dispatch({ effects: apply.of({ revision, ...job, items: candidates.map(c => ({ ...c, from: c.from + job.from, to: c.to + job.from })) }) });
+                        const items = candidates.map(c => ({ ...c, from: c.from + job.from, to: c.to + job.from }));
+                        const previous = this.view.state.field(highlights).items.filter(c => c.from < job.to && c.to > job.from);
+                        if (JSON.stringify(previous) !== JSON.stringify(items))
+                            this.view.dispatch({ effects: apply.of({ revision, ...job, items }) });
                     } else stats.skippedUnparsed++;
+                    // A parser/focus update during dispatch may have scheduled a
+                    // new generation. Do not replace its timer with an old step.
+                    if (!current()) return;
                     if (!advanced && index >= visibleCount) {
-                        if (settings.nlpMode === 'rules' || this.view.hasFocus === false) return;
+                        if (settings.nlpMode === 'rules') return;
                         advanced = true;
                         index = 0;
                         // Separate idle phase; never advanced inference on the input path.
@@ -196,7 +206,7 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                     }, 0);
                     return;
                 }
-                if (update.docChanged || update.viewportChanged || update.geometryChanged || update.focusChanged || syntaxTree(update.startState) !== syntaxTree(update.state) || update.transactions.some(t => t.effects.some(e => e.is(reset))))
+                if (update.docChanged || update.viewportChanged || (update.geometryChanged && this.decorations.size === 0) || update.focusChanged || syntaxTree(update.startState) !== syntaxTree(update.state) || update.transactions.some(t => t.effects.some(e => e.is(reset))))
                     this.schedule();
                 if (update.docChanged || update.viewportChanged || update.geometryChanged || update.startState.field(highlights) !== update.state.field(highlights))
                     this.render();

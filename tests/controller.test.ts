@@ -26,6 +26,7 @@ function harness(text: string, options: { unparsed?: boolean; from?: number; ide
         get viewport() { return {from: Math.min(viewport.from,state.doc.length), to: Math.min(viewport.to,state.doc.length)}; },
         get visibleRanges() { return [this.viewport]; },
         composing: false,
+        hasFocus: false,
         dispatch(spec: TransactionSpec) {
             const startState = state, tr = state.update(spec);
             state = tr.state;
@@ -120,7 +121,7 @@ it('can reopen the same contents and isolate concurrent editors', async () => {
     b.controller.destroy(); reopened.controller.destroy();
 });
 
-it('runs advanced after fast and returns to an idle state', async () => {
+it('runs advanced without requiring keyboard focus, then returns to idle', async () => {
     const h=harness('Рекурсия — определение через самого себя.');
     await vi.advanceTimersByTimeAsync(700);
     expect(h.view.state.field(highlights).items).toEqual([]);
@@ -161,5 +162,25 @@ it('progresses beyond the visible lines within a bounded finite neighborhood', a
     const h=harness(text,{to:17}); await vi.advanceTimersByTimeAsync(3000);
     expect(h.view.state.field(highlights).items.some(c=>c.from===text.indexOf('Рекурсия'))).toBe(true);
     expect(h.controller.decorations.size).toBe(0);
+    expect(vi.getTimerCount()).toBe(0); h.controller.destroy();
+});
+it('does not downgrade advanced results or restart after decoration geometry updates', async () => {
+    const text='Градиентный спуск — алгоритм оптимизации.\nФункция потерь определяется как мера ошибки.';
+    const h=harness(text); await vi.advanceTimersByTimeAsync(2500);
+    expect(h.view.state.field(highlights).items).toHaveLength(2);
+    const count=h.stats.analyzed;
+    h.move(0,text.length,true); await vi.advanceTimersByTimeAsync(10000);
+    expect(h.view.state.field(highlights).items).toHaveLength(2);
+    expect(h.stats.analyzed).toBe(count);
+    expect(vi.getTimerCount()).toBe(0); h.controller.destroy();
+});
+it('coalesces rapid typing and a large paste without document-sized queues', async () => {
+    const h=harness('Обычный текст.');
+    for(let n=0;n<100;n++)h.view.dispatch({changes:{from:h.view.state.doc.length,insert:'а'}});
+    h.view.dispatch({changes:{from:0,to:h.view.state.doc.length,insert:'Градиентный спуск — алгоритм оптимизации.\n'.repeat(10000)}});
+    h.move(0,40);
+    await vi.advanceTimersByTimeAsync(5000);
+    expect(h.stats.analyzed).toBeLessThan(300);
+    expect(h.view.state.field(highlights).items.length).toBeLessThanOrEqual(2048);
     expect(vi.getTimerCount()).toBe(0); h.controller.destroy();
 });
