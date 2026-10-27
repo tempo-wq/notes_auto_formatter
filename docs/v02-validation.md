@@ -37,6 +37,8 @@ Machine: Apple M5, arm64, 16 GiB, Darwin 25.5.0, Node v24.22.1. CPU only; no ext
 
 Analyzer-only initialization 0.417 ms (one observation, not cold plugin startup). Node before/after RSS 47.2/81.6 MiB, OS peak 81.6 MiB; baseline OS peak 70.5 MiB. Includes runtime/JIT/transient allocation; no forced GC or claim of isolated plugin RAM. This is not proof of long-term absence of leaks. Controller tests verify structural bounds, finite completion, stale responses and cleanup. Raw samples: `research/results/v02/performance-*.json`.
 
+A paired warm Obsidian snapshot with the same two note tabs/settings showed summed RSS 747.1 MiB with the plugin disabled and 750.5 MiB enabled (+3.4 MiB). This includes all host processes and shared pages, GUI work and existing allocations; it is not isolated plugin heap, a cold-start result, or proof against leaks. CPU times and timestamps are in `research/results/v02/obsidian-host-snapshots.json`.
+
 Installed files: main.js + manifest.json + styles.css, approximately 19 KB combined; downloaded weights 0 bytes; optional Python process none. Plugin startup/first-highlight p50/p95 and exact typing latency inside Obsidian were not instrumented. Fast/Advanced configured delays are budgets, not measured end-to-end timings.
 
 ## Real Obsidian checks
@@ -51,7 +53,7 @@ Opened a second tab containing 100,000 whitespace-delimited tokens (~836k UTF-16
 - Strict TypeScript and production esbuild passed; no separate linter configured.
 - 19 Python research tests passed; new quality evaluation checks every output substring/offset and records unchanged reference hashes.
 - Fresh frozen-lockfile dependency install passed in an isolated temporary folder. No new runtime dependencies.
-- CI workflow added; hosted result pending. No stable tag/release yet. Previous v0.1.1-stable is preserved.
+- Initial hosted push and PR CI passed at 775ce168. GitHub warned about Node20 actions, so actions are being pinned to official v6/Node24 revisions and Ubuntu 24.04; the updated run is pending. Sources: [checkout changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md), [setup-node documentation](https://github.com/actions/setup-node/blob/main/README.md). No stable tag/release yet. Previous v0.1.1-stable is preserved.
 
 ## Reproduce
 
