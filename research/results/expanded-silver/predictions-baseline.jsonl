@@ -1,0 +1,74 @@
+{"id": "wiki_20446_1", "split": "development", "source_id": "wiki_20446", "annotations": [{"start": 506, "end": 536, "label": "DEFINITION_TERM", "score": 0.95, "text": "Процесс вычисления производной"}]}
+{"id": "wiki_25898_1", "split": "development", "source_id": "wiki_25898", "annotations": []}
+{"id": "wiki_25898_4", "split": "development", "source_id": "wiki_25898", "annotations": [{"start": 707, "end": 714, "label": "KEY_TERM", "score": 0.9, "text": "матрица"}]}
+{"id": "wiki_1900_1", "split": "development", "source_id": "wiki_1900", "annotations": []}
+{"id": "wiki_1900_2", "split": "development", "source_id": "wiki_1900", "annotations": [{"start": 813, "end": 814, "label": "DEFINITION_TERM", "score": 0.95, "text": "В"}]}
+{"id": "wiki_1900_3", "split": "development", "source_id": "wiki_1900", "annotations": []}
+{"id": "wiki_1900_4", "split": "development", "source_id": "wiki_1900", "annotations": []}
+{"id": "wiki_1900_5", "split": "development", "source_id": "wiki_1900", "annotations": []}
+{"id": "wiki_29983_1", "split": "development", "source_id": "wiki_29983", "annotations": []}
+{"id": "wiki_29983_2", "split": "development", "source_id": "wiki_29983", "annotations": []}
+{"id": "wiki_29983_3", "split": "development", "source_id": "wiki_29983", "annotations": []}
+{"id": "wiki_5681_1", "split": "development", "source_id": "wiki_5681", "annotations": []}
+{"id": "wiki_5681_2", "split": "development", "source_id": "wiki_5681", "annotations": [{"start": 795, "end": 799, "label": "KEY_TERM", "score": 0.9, "text": "тело"}, {"start": 828, "end": 846, "label": "KEY_TERM", "score": 0.9, "text": "материальная точка"}]}
+{"id": "wiki_186974_1", "split": "development", "source_id": "wiki_186974", "annotations": []}
+{"id": "wiki_186974_2", "split": "development", "source_id": "wiki_186974", "annotations": []}
+{"id": "wiki_186974_3", "split": "development", "source_id": "wiki_186974", "annotations": []}
+{"id": "wiki_186974_4", "split": "development", "source_id": "wiki_186974", "annotations": []}
+{"id": "wiki_186974_5", "split": "development", "source_id": "wiki_186974", "annotations": []}
+{"id": "wiki_2741_1", "split": "development", "source_id": "wiki_2741", "annotations": []}
+{"id": "wiki_2741_2", "split": "development", "source_id": "wiki_2741", "annotations": []}
+{"id": "wiki_2741_3", "split": "development", "source_id": "wiki_2741", "annotations": [{"start": 1327, "end": 1343, "label": "DEFINITION_TERM", "score": 0.95, "text": "Приблизительно в"}]}
+{"id": "wiki_2741_4", "split": "development", "source_id": "wiki_2741", "annotations": []}
+{"id": "wiki_2741_5", "split": "development", "source_id": "wiki_2741", "annotations": []}
+{"id": "wiki_7841_1", "split": "development", "source_id": "wiki_7841", "annotations": []}
+{"id": "wiki_7841_2", "split": "development", "source_id": "wiki_7841", "annotations": [{"start": 474, "end": 486, "label": "DEFINITION_TERM", "score": 0.95, "text": "инкапсуляция"}]}
+{"id": "wiki_7841_3", "split": "development", "source_id": "wiki_7841", "annotations": [{"start": 0, "end": 11, "label": "DEFINITION_TERM", "score": 0.95, "text": "модульность"}, {"start": 580, "end": 589, "label": "DEFINITION_TERM", "score": 0.95, "text": "типизация"}, {"start": 921, "end": 932, "label": "DEFINITION_TERM", "score": 0.95, "text": "параллелизм"}]}
+{"id": "wiki_7841_4", "split": "development", "source_id": "wiki_7841", "annotations": [{"start": 0, "end": 13, "label": "DEFINITION_TERM", "score": 0.95, "text": "сохраняемость"}]}
+{"id": "wiki_7841_5", "split": "development", "source_id": "wiki_7841", "annotations": []}
+{"id": "wiki_201799_1", "split": "development", "source_id": "wiki_201799", "annotations": [{"start": 297, "end": 313, "label": "KEY_TERM", "score": 0.9, "text": "структура данных"}, {"start": 988, "end": 1211, "label": "EXAMPLE", "score": 0.95, "text": "Например, B-деревья обычно подходят для создания баз данных, в то время как хеш-таблицы используются повсеместно для создания различного рода словарей, например, для отображения доменных имён в интернет-адресах компьютеров."}]}
+{"id": "wiki_201799_2", "split": "development", "source_id": "wiki_201799", "annotations": [{"start": 735, "end": 842, "label": "EXAMPLE", "score": 0.95, "text": "Например, структура данных хеш-таблица встроена в языки программирования Lua, Perl, Python, Ruby, Tcl и др."}, {"start": 1092, "end": 1250, "label": "EXAMPLE", "score": 0.95, "text": "Например, двусвязный список может быть построен с помощью записей и ссылок, где каждая запись (узел) будет хранить данные и ссылки на «левый» и «правый» узлы."}]}
+{"id": "wiki_201799_3", "split": "development", "source_id": "wiki_201799", "annotations": []}
+{"id": "wiki_164924_1", "split": "development", "source_id": "wiki_164924", "annotations": []}
+{"id": "wiki_164924_2", "split": "development", "source_id": "wiki_164924", "annotations": []}
+{"id": "wiki_164924_3", "split": "development", "source_id": "wiki_164924", "annotations": []}
+{"id": "wiki_164924_4", "split": "development", "source_id": "wiki_164924", "annotations": []}
+{"id": "wiki_164924_5", "split": "development", "source_id": "wiki_164924", "annotations": []}
+{"id": "wiki_36616_1", "split": "development", "source_id": "wiki_36616", "annotations": [{"start": 673, "end": 691, "label": "KEY_TERM", "score": 0.9, "text": "Естественный отбор"}]}
+{"id": "wiki_36616_2", "split": "development", "source_id": "wiki_36616", "annotations": [{"start": 1288, "end": 1474, "label": "EXAMPLE", "score": 0.95, "text": "Например, если потомки успешного и быстро размножающегося организма слабые и плохо размножаются, то генетический вклад и, соответственно, приспособленность этого организма будут низкими."}]}
+{"id": "wiki_36616_3", "split": "development", "source_id": "wiki_36616", "annotations": []}
+{"id": "wiki_36616_4", "split": "development", "source_id": "wiki_36616", "annotations": []}
+{"id": "wiki_36616_5", "split": "development", "source_id": "wiki_36616", "annotations": []}
+{"id": "wiki_94341_1", "split": "development", "source_id": "wiki_94341", "annotations": []}
+{"id": "wiki_94341_2", "split": "development", "source_id": "wiki_94341", "annotations": []}
+{"id": "wiki_94341_3", "split": "development", "source_id": "wiki_94341", "annotations": []}
+{"id": "wiki_94341_4", "split": "development", "source_id": "wiki_94341", "annotations": []}
+{"id": "wiki_94341_5", "split": "development", "source_id": "wiki_94341", "annotations": []}
+{"id": "wiki_3024868_1", "split": "development", "source_id": "wiki_3024868", "annotations": []}
+{"id": "wiki_3024868_2", "split": "development", "source_id": "wiki_3024868", "annotations": []}
+{"id": "wiki_3024868_3", "split": "development", "source_id": "wiki_3024868", "annotations": []}
+{"id": "wiki_3024868_4", "split": "development", "source_id": "wiki_3024868", "annotations": []}
+{"id": "wiki_3024868_5", "split": "development", "source_id": "wiki_3024868", "annotations": []}
+{"id": "wiki_293181_1", "split": "development", "source_id": "wiki_293181", "annotations": []}
+{"id": "wiki_293181_2", "split": "development", "source_id": "wiki_293181", "annotations": [{"start": 0, "end": 21, "label": "DEFINITION_TERM", "score": 0.95, "text": "Математическая модель"}]}
+{"id": "wiki_293181_5", "split": "development", "source_id": "wiki_293181", "annotations": []}
+{"id": "wiki_365821_1_clean", "split": "test", "source_id": "wiki_365821", "annotations": []}
+{"id": "wiki_42280_1", "split": "test", "source_id": "wiki_42280", "annotations": []}
+{"id": "wiki_42280_2", "split": "test", "source_id": "wiki_42280", "annotations": [{"start": 508, "end": 686, "label": "EXAMPLE", "score": 0.95, "text": "Например, в классической механике был сформулирован закон сохранения механической энергии, в термодинамике — первое начало термодинамики, а в электродинамике — теорема Пойнтинга."}]}
+{"id": "wiki_42280_3", "split": "test", "source_id": "wiki_42280", "annotations": []}
+{"id": "wiki_10685_1", "split": "test", "source_id": "wiki_10685", "annotations": []}
+{"id": "wiki_3397404_1", "split": "test", "source_id": "wiki_3397404", "annotations": []}
+{"id": "wiki_3397404_2", "split": "test", "source_id": "wiki_3397404", "annotations": [{"start": 963, "end": 974, "label": "KEY_TERM", "score": 0.9, "text": "протоплазма"}]}
+{"id": "wiki_3397404_3", "split": "test", "source_id": "wiki_3397404", "annotations": []}
+{"id": "wiki_3397404_4", "split": "test", "source_id": "wiki_3397404", "annotations": []}
+{"id": "wiki_3397404_5", "split": "test", "source_id": "wiki_3397404", "annotations": []}
+{"id": "wiki_2681_1", "split": "test", "source_id": "wiki_2681", "annotations": []}
+{"id": "wiki_2681_2", "split": "test", "source_id": "wiki_2681", "annotations": [{"start": 50, "end": 62, "label": "KEY_TERM", "score": 0.9, "text": "государьство"}]}
+{"id": "wiki_2681_3", "split": "test", "source_id": "wiki_2681", "annotations": []}
+{"id": "wiki_2681_4", "split": "test", "source_id": "wiki_2681", "annotations": []}
+{"id": "wiki_2681_5", "split": "test", "source_id": "wiki_2681", "annotations": []}
+{"id": "wiki_40095_1", "split": "test", "source_id": "wiki_40095", "annotations": []}
+{"id": "wiki_40095_2", "split": "test", "source_id": "wiki_40095", "annotations": []}
+{"id": "wiki_40095_3", "split": "test", "source_id": "wiki_40095", "annotations": [{"start": 0, "end": 41, "label": "DEFINITION_TERM", "score": 0.95, "text": "Сейчас этот процесс в научной методологии"}]}
+{"id": "wiki_40095_4", "split": "test", "source_id": "wiki_40095", "annotations": []}
+{"id": "wiki_40095_5", "split": "test", "source_id": "wiki_40095", "annotations": [{"start": 831, "end": 841, "label": "DEFINITION_TERM", "score": 0.95, "text": "Эта ошибка"}]}

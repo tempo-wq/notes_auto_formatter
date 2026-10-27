@@ -1,0 +1,19 @@
+{
+  "minilm": {
+    "id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "license": "apache-2.0",
+    "url": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "mode": "CPU fp32",
+    "max_seq_length": 128
+  },
+  "spacy": {
+    "id": "ru_core_news_sm",
+    "version": "3.8.0",
+    "license": "MIT",
+    "url": "https://github.com/explosion/spacy-models/releases/tag/ru_core_news_sm-3.8.0",
+    "disabled": [
+      "ner"
+    ]
+  }
+}

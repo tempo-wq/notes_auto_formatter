@@ -1,0 +1,39 @@
+{
+  "round_id": "round-01",
+  "annotation_status": "awaiting_review",
+  "task": "small calibration exercise; not a final benchmark",
+  "offsets": "Unicode code points, half-open [start,end)",
+  "blind_to_predictions": true,
+  "cases": [
+    {
+      "id": "A",
+      "parent_id": "wiki_293181_2",
+      "source_id": "wiki_293181",
+      "split": "development",
+      "text": "Математическая модель — это приближённое описание какого-либо класса явлений внешнего мира, выраженное математическими символами.",
+      "text_sha256": "0a728ab7f1a8cf86cba3ed24cdafbc0143dc61a28bd0d5ca76bada99fd2e62aa",
+      "label_scope": [
+        "DEFINITION_TERM",
+        "DEFINITION"
+      ],
+      "transformations": "verbatim first sentence",
+      "status": "pending",
+      "annotations": []
+    },
+    {
+      "id": "B",
+      "parent_id": "wiki_29983_2",
+      "source_id": "wiki_29983",
+      "split": "development",
+      "text": "Электрический ток имеет следующие проявления: нагревание проводников; изменение химического состава проводников; создание магнитного поля.",
+      "text_sha256": "df1ddfb85d3db2dbcb792a70f2eac96709fd8197e91476d4222f0ab9a22119c3",
+      "label_scope": [
+        "KEY_TERM",
+        "IMPORTANT"
+      ],
+      "transformations": "adapted excerpt: parenthetical qualifications omitted, line breaks replaced with semicolons; not a verbatim quotation",
+      "status": "pending",
+      "annotations": []
+    }
+  ]
+}

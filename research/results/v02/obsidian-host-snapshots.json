@@ -1,0 +1,68 @@
+{
+  "scope": "One paired warm-process snapshot, all Obsidian processes summed. Same open note tabs and settings; not isolated JS heap. Includes GUI and shared pages, no forced GC. Not a controlled additional-memory estimate or leak proof. CPU time cumulative; interval includes the enable action.",
+  "off": {
+    "phase": "plugin disabled, two synthetic note tabs retained, settings open",
+    "utc": "2026-10-27T07:31:52.220567+00:00",
+    "processes": [
+      {
+        "rssKiB": 195520,
+        "cpuTime": "0:17.38",
+        "kind": "Obsidian"
+      },
+      {
+        "rssKiB": 90368,
+        "cpuTime": "0:21.54",
+        "kind": "Obsidian Helper"
+      },
+      {
+        "rssKiB": 48416,
+        "cpuTime": "0:00.43",
+        "kind": "Obsidian Helper"
+      },
+      {
+        "rssKiB": 137312,
+        "cpuTime": "0:11.64",
+        "kind": "Obsidian Helper (Renderer)"
+      },
+      {
+        "rssKiB": 293408,
+        "cpuTime": "0:31.06",
+        "kind": "Obsidian Helper (Renderer)"
+      }
+    ],
+    "totalRssMiB": 747.09375
+  },
+  "on": {
+    "phase": "plugin enabled, same tabs/settings, after bounded idle analysis",
+    "utc": "2026-10-27T07:32:23.771708+00:00",
+    "processes": [
+      {
+        "rssKiB": 195712,
+        "cpuTime": "0:17.45",
+        "kind": "Obsidian"
+      },
+      {
+        "rssKiB": 90624,
+        "cpuTime": "0:21.62",
+        "kind": "Obsidian Helper"
+      },
+      {
+        "rssKiB": 48416,
+        "cpuTime": "0:00.43",
+        "kind": "Obsidian Helper"
+      },
+      {
+        "rssKiB": 137312,
+        "cpuTime": "0:11.65",
+        "kind": "Obsidian Helper (Renderer)"
+      },
+      {
+        "rssKiB": 296432,
+        "cpuTime": "0:31.30",
+        "kind": "Obsidian Helper (Renderer)"
+      }
+    ],
+    "totalRssMiB": 750.484375
+  },
+  "deltaRssMiB": 3.390625
+}

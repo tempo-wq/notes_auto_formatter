@@ -1,0 +1,21 @@
+{
+  "round_id": "round-01",
+  "reviewer_id": null,
+  "reviewed_at": null,
+  "evidence": null,
+  "complete": false,
+  "cases": [
+    {
+      "id": "A",
+      "text_sha256": "0a728ab7f1a8cf86cba3ed24cdafbc0143dc61a28bd0d5ca76bada99fd2e62aa",
+      "no_highlights": false,
+      "annotations": []
+    },
+    {
+      "id": "B",
+      "text_sha256": "df1ddfb85d3db2dbcb792a70f2eac96709fd8197e91476d4222f0ab9a22119c3",
+      "no_highlights": false,
+      "annotations": []
+    }
+  ]
+}

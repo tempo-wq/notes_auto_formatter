@@ -1,0 +1,108 @@
+{
+  "name": "rule_embeddings",
+  "status": "ok",
+  "n": 2,
+  "split": "development",
+  "reference_policy": "Human selected spans; agent inferred category assignment from prompt scope. Not adjudicated final gold.",
+  "term_exact": {
+    "tp": 1,
+    "fp": 6,
+    "fn": 4,
+    "precision": 0.14285714285714285,
+    "recall": 0.2,
+    "f1": 0.16666666666666666,
+    "macro_f1": 0.16666666666666666,
+    "per_category": {
+      "TERM": {
+        "tp": 1,
+        "fp": 6,
+        "fn": 4,
+        "precision": 0.14285714285714285,
+        "recall": 0.2,
+        "f1": 0.16666666666666666
+      }
+    },
+    "n": 2
+  },
+  "term_overlap": {
+    "tp": 5,
+    "fp": 2,
+    "fn": 0,
+    "precision": 0.7142857142857143,
+    "recall": 1.0,
+    "f1": 0.8333333333333334,
+    "macro_f1": 0.8333333333333334,
+    "per_category": {
+      "TERM": {
+        "tp": 5,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "f1": 0.8333333333333334
+      }
+    },
+    "n": 2
+  },
+  "predictions": [
+    {
+      "id": "human_round01_A",
+      "annotations": [
+        {
+          "start": 0,
+          "end": 21,
+          "label": "DEFINITION_TERM",
+          "score": 0.95,
+          "text": "Математическая модель"
+        },
+        {
+          "start": 41,
+          "end": 68,
+          "label": "KEY_TERM",
+          "score": 0.44771862030029297,
+          "text": "описание какого-либо класса"
+        },
+        {
+          "start": 92,
+          "end": 128,
+          "label": "KEY_TERM",
+          "score": 0.5959232449531555,
+          "text": "выраженное математическими символами"
+        }
+      ]
+    },
+    {
+      "id": "human_round01_B",
+      "annotations": [
+        {
+          "start": 0,
+          "end": 23,
+          "label": "KEY_TERM",
+          "score": 0.6871437430381775,
+          "text": "Электрический ток имеет"
+        },
+        {
+          "start": 46,
+          "end": 68,
+          "label": "KEY_TERM",
+          "score": 0.5691032409667969,
+          "text": "нагревание проводников"
+        },
+        {
+          "start": 80,
+          "end": 111,
+          "label": "KEY_TERM",
+          "score": 0.6296565532684326,
+          "text": "химического состава проводников"
+        },
+        {
+          "start": 113,
+          "end": 137,
+          "label": "KEY_TERM",
+          "score": 0.6422087550163269,
+          "text": "создание магнитного поля"
+        }
+      ]
+    }
+  ]
+}

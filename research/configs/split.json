@@ -1,0 +1,16 @@
+{
+  "seed": 20261027,
+  "unit": "source_id",
+  "test_sources": [
+    "wiki_365821",
+    "wiki_42280",
+    "wiki_10685",
+    "wiki_3397404",
+    "wiki_2681",
+    "wiki_40095"
+  ],
+  "target_ratio": [
+    0.7,
+    0.3
+  ]
+}

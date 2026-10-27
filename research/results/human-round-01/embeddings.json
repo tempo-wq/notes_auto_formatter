@@ -1,0 +1,129 @@
+{
+  "name": "embeddings",
+  "status": "ok",
+  "n": 2,
+  "split": "development",
+  "reference_policy": "Human selected spans; agent inferred category assignment from prompt scope. Not adjudicated final gold.",
+  "term_exact": {
+    "tp": 2,
+    "fp": 8,
+    "fn": 3,
+    "precision": 0.2,
+    "recall": 0.4,
+    "f1": 0.26666666666666666,
+    "macro_f1": 0.26666666666666666,
+    "per_category": {
+      "TERM": {
+        "tp": 2,
+        "fp": 8,
+        "fn": 3,
+        "precision": 0.2,
+        "recall": 0.4,
+        "f1": 0.26666666666666666
+      }
+    },
+    "n": 2
+  },
+  "term_overlap": {
+    "tp": 5,
+    "fp": 5,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "macro_f1": 0.6666666666666666,
+    "per_category": {
+      "TERM": {
+        "tp": 5,
+        "fp": 5,
+        "fn": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666
+      }
+    },
+    "n": 2
+  },
+  "predictions": [
+    {
+      "id": "human_round01_A",
+      "annotations": [
+        {
+          "start": 0,
+          "end": 21,
+          "label": "KEY_TERM",
+          "score": 0.7231448888778687,
+          "text": "Математическая модель"
+        },
+        {
+          "start": 92,
+          "end": 128,
+          "label": "KEY_TERM",
+          "score": 0.5959232449531555,
+          "text": "выраженное математическими символами"
+        },
+        {
+          "start": 86,
+          "end": 118,
+          "label": "KEY_TERM",
+          "score": 0.5965573191642761,
+          "text": "мира, выраженное математическими"
+        },
+        {
+          "start": 41,
+          "end": 68,
+          "label": "KEY_TERM",
+          "score": 0.44771862030029297,
+          "text": "описание какого-либо класса"
+        },
+        {
+          "start": 15,
+          "end": 21,
+          "label": "KEY_TERM",
+          "score": 0.585247278213501,
+          "text": "модель"
+        }
+      ]
+    },
+    {
+      "id": "human_round01_B",
+      "annotations": [
+        {
+          "start": 0,
+          "end": 23,
+          "label": "KEY_TERM",
+          "score": 0.6871437430381775,
+          "text": "Электрический ток имеет"
+        },
+        {
+          "start": 113,
+          "end": 137,
+          "label": "KEY_TERM",
+          "score": 0.6422087550163269,
+          "text": "создание магнитного поля"
+        },
+        {
+          "start": 80,
+          "end": 111,
+          "label": "KEY_TERM",
+          "score": 0.6296565532684326,
+          "text": "химического состава проводников"
+        },
+        {
+          "start": 46,
+          "end": 68,
+          "label": "KEY_TERM",
+          "score": 0.5691032409667969,
+          "text": "нагревание проводников"
+        },
+        {
+          "start": 0,
+          "end": 17,
+          "label": "KEY_TERM",
+          "score": 0.6764878034591675,
+          "text": "Электрический ток"
+        }
+      ]
+    }
+  ]
+}

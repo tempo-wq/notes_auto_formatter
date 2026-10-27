@@ -1,0 +1,1 @@
+{"seed":20261027,"device":"cpu","threads":1,"top_k":5,"repeats":5,"warmup":2,"sizes_words":[100,500,2000,10000],"quality_policy":"No independent human gold: primary quality metrics unavailable; agent-reviewed silver is diagnostic only.","models":{"minilm":"sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"}}
