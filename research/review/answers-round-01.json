@@ -1,0 +1,52 @@
+{
+  "round_id": "round-01",
+  "reviewer_id": "chat-user",
+  "reviewed_at": "2026-10-27T08:49:10+03:00",
+  "evidence": {
+    "kind": "direct user reply in this chat",
+    "question_id": "call_a61068a469eb4c0fa7cf9a08495b66da",
+    "raw_answer": "Математическая модель приближённое описание Электрический ток нагревание изменение химического состава магнитного поля"
+  },
+  "complete": true,
+  "cases": [
+    {
+      "id": "A",
+      "text_sha256": "0a728ab7f1a8cf86cba3ed24cdafbc0143dc61a28bd0d5ca76bada99fd2e62aa",
+      "no_highlights": false,
+      "annotations": [
+        {
+          "text": "Математическая модель",
+          "label": "DEFINITION_TERM"
+        },
+        {
+          "text": "приближённое описание",
+          "label": "DEFINITION"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text_sha256": "df1ddfb85d3db2dbcb792a70f2eac96709fd8197e91476d4222f0ab9a22119c3",
+      "no_highlights": false,
+      "annotations": [
+        {
+          "text": "Электрический ток",
+          "label": "KEY_TERM"
+        },
+        {
+          "text": "нагревание",
+          "label": "KEY_TERM"
+        },
+        {
+          "text": "изменение химического состава",
+          "label": "KEY_TERM"
+        },
+        {
+          "text": "магнитного поля",
+          "label": "KEY_TERM"
+        }
+      ]
+    }
+  ],
+  "label_provenance": "Agent mapped user-selected phrases to the categories stated in the question; category assignment is not separately adjudicated."
+}

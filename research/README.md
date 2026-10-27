@@ -43,3 +43,7 @@ The shared pinned environment contains torch. spaCy/Thinc can detect/import opti
 YAKE: top 3/5, three-word phrases, Russian, dedup .9; no score-threshold tuning on the test set. TextRank: windows 2/4, damping .85, top 5, simple adjacent phrase assembly; it is a prototype, not all TextRank variants. Morphology is an auxiliary YAKE normalization layer. spaCy uses Russian dependencies and modified noun groups, not every noun. Embedding candidate generation is regex-based with a 64-phrase cap (or spaCy candidates in the three-component hybrid), then context centroid ranking with MMR. Context is chunked into 120-token windows, up to 256 windows; larger documents require further engineering. All configurations are exploratory, not optimized production algorithms.
 
 See `reports/nlp-benchmark.md`, `reports/stable-validation.md`, `datasets/LICENSE.md`, `configs/models.json`, `results/environment.json` and raw JSON results for details.
+
+## Первый пользовательский раунд
+
+В `review/` сохранён выбор пользователя на двух development-примерах без подсказок алгоритмов. Категории интерпретированы агентом, поэтому это не окончательно согласованный gold. [Результаты](reports/human-review-round-01.md) и [процедура](review/README.md) отделены от исходного benchmark. Параметры моделей и стабильный плагин не менялись.

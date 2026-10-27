@@ -1,0 +1,129 @@
+{
+  "name": "yake5",
+  "status": "ok",
+  "n": 2,
+  "split": "development",
+  "reference_policy": "Human selected spans; agent inferred category assignment from prompt scope. Not adjudicated final gold.",
+  "term_exact": {
+    "tp": 2,
+    "fp": 8,
+    "fn": 3,
+    "precision": 0.2,
+    "recall": 0.4,
+    "f1": 0.26666666666666666,
+    "macro_f1": 0.26666666666666666,
+    "per_category": {
+      "TERM": {
+        "tp": 2,
+        "fp": 8,
+        "fn": 3,
+        "precision": 0.2,
+        "recall": 0.4,
+        "f1": 0.26666666666666666
+      }
+    },
+    "n": 2
+  },
+  "term_overlap": {
+    "tp": 4,
+    "fp": 6,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.8,
+    "f1": 0.5333333333333333,
+    "macro_f1": 0.5333333333333333,
+    "per_category": {
+      "TERM": {
+        "tp": 4,
+        "fp": 6,
+        "fn": 1,
+        "precision": 0.4,
+        "recall": 0.8,
+        "f1": 0.5333333333333333
+      }
+    },
+    "n": 2
+  },
+  "predictions": [
+    {
+      "id": "human_round01_A",
+      "annotations": [
+        {
+          "start": 92,
+          "end": 128,
+          "label": "KEY_TERM",
+          "score": 0.9917474039220006,
+          "text": "выраженное математическими символами"
+        },
+        {
+          "start": 0,
+          "end": 21,
+          "label": "KEY_TERM",
+          "score": 0.9749357500616725,
+          "text": "Математическая модель"
+        },
+        {
+          "start": 28,
+          "end": 61,
+          "label": "KEY_TERM",
+          "score": 0.9676809939894683,
+          "text": "приближённое описание какого-либо"
+        },
+        {
+          "start": 41,
+          "end": 68,
+          "label": "KEY_TERM",
+          "score": 0.9676809939894683,
+          "text": "описание какого-либо класса"
+        },
+        {
+          "start": 50,
+          "end": 76,
+          "label": "KEY_TERM",
+          "score": 0.9676809939894683,
+          "text": "какого-либо класса явлений"
+        }
+      ]
+    },
+    {
+      "id": "human_round01_B",
+      "annotations": [
+        {
+          "start": 113,
+          "end": 137,
+          "label": "KEY_TERM",
+          "score": 0.9978284911024768,
+          "text": "создание магнитного поля"
+        },
+        {
+          "start": 0,
+          "end": 23,
+          "label": "KEY_TERM",
+          "score": 0.9963793995513376,
+          "text": "Электрический ток имеет"
+        },
+        {
+          "start": 18,
+          "end": 44,
+          "label": "KEY_TERM",
+          "score": 0.9963793995513376,
+          "text": "имеет следующие проявления"
+        },
+        {
+          "start": 70,
+          "end": 99,
+          "label": "KEY_TERM",
+          "score": 0.9963793995513376,
+          "text": "изменение химического состава"
+        },
+        {
+          "start": 80,
+          "end": 111,
+          "label": "KEY_TERM",
+          "score": 0.9955772102228984,
+          "text": "химического состава проводников"
+        }
+      ]
+    }
+  ]
+}

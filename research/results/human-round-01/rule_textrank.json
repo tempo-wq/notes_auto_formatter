@@ -1,0 +1,101 @@
+{
+  "name": "rule_textrank",
+  "status": "ok",
+  "n": 2,
+  "split": "development",
+  "reference_policy": "Human selected spans; agent inferred category assignment from prompt scope. Not adjudicated final gold.",
+  "term_exact": {
+    "tp": 1,
+    "fp": 5,
+    "fn": 4,
+    "precision": 0.16666666666666666,
+    "recall": 0.2,
+    "f1": 0.18181818181818182,
+    "macro_f1": 0.18181818181818182,
+    "per_category": {
+      "TERM": {
+        "tp": 1,
+        "fp": 5,
+        "fn": 4,
+        "precision": 0.16666666666666666,
+        "recall": 0.2,
+        "f1": 0.18181818181818182
+      }
+    },
+    "n": 2
+  },
+  "term_overlap": {
+    "tp": 2,
+    "fp": 4,
+    "fn": 3,
+    "precision": 0.3333333333333333,
+    "recall": 0.4,
+    "f1": 0.36363636363636365,
+    "macro_f1": 0.36363636363636365,
+    "per_category": {
+      "TERM": {
+        "tp": 2,
+        "fp": 4,
+        "fn": 3,
+        "precision": 0.3333333333333333,
+        "recall": 0.4,
+        "f1": 0.36363636363636365
+      }
+    },
+    "n": 2
+  },
+  "predictions": [
+    {
+      "id": "human_round01_A",
+      "annotations": [
+        {
+          "start": 0,
+          "end": 21,
+          "label": "DEFINITION_TERM",
+          "score": 0.95,
+          "text": "Математическая модель"
+        },
+        {
+          "start": 41,
+          "end": 68,
+          "label": "KEY_TERM",
+          "score": 0.09665740476665201,
+          "text": "описание какого-либо класса"
+        },
+        {
+          "start": 86,
+          "end": 90,
+          "label": "KEY_TERM",
+          "score": 0.09818414228295101,
+          "text": "мира"
+        }
+      ]
+    },
+    {
+      "id": "human_round01_B",
+      "annotations": [
+        {
+          "start": 24,
+          "end": 44,
+          "label": "KEY_TERM",
+          "score": 0.0839511104833874,
+          "text": "следующие проявления"
+        },
+        {
+          "start": 46,
+          "end": 68,
+          "label": "KEY_TERM",
+          "score": 0.11647428076375363,
+          "text": "нагревание проводников"
+        },
+        {
+          "start": 100,
+          "end": 111,
+          "label": "KEY_TERM",
+          "score": 0.15193933336919563,
+          "text": "проводников"
+        }
+      ]
+    }
+  ]
+}

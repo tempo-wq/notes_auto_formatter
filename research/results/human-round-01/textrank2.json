@@ -1,0 +1,129 @@
+{
+  "name": "textrank2",
+  "status": "ok",
+  "n": 2,
+  "split": "development",
+  "reference_policy": "Human selected spans; agent inferred category assignment from prompt scope. Not adjudicated final gold.",
+  "term_exact": {
+    "tp": 0,
+    "fp": 10,
+    "fn": 5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "macro_f1": 0.0,
+    "per_category": {
+      "TERM": {
+        "tp": 0,
+        "fp": 10,
+        "fn": 5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "n": 2
+  },
+  "term_overlap": {
+    "tp": 4,
+    "fp": 6,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.8,
+    "f1": 0.5333333333333333,
+    "macro_f1": 0.5333333333333333,
+    "per_category": {
+      "TERM": {
+        "tp": 4,
+        "fp": 6,
+        "fn": 1,
+        "precision": 0.4,
+        "recall": 0.8,
+        "f1": 0.5333333333333333
+      }
+    },
+    "n": 2
+  },
+  "predictions": [
+    {
+      "id": "human_round01_A",
+      "annotations": [
+        {
+          "start": 15,
+          "end": 21,
+          "label": "KEY_TERM",
+          "score": 0.09663352620969098,
+          "text": "модель"
+        },
+        {
+          "start": 28,
+          "end": 61,
+          "label": "KEY_TERM",
+          "score": 0.08816187607308966,
+          "text": "приближённое описание какого-либо"
+        },
+        {
+          "start": 86,
+          "end": 90,
+          "label": "KEY_TERM",
+          "score": 0.08765414042177612,
+          "text": "мира"
+        },
+        {
+          "start": 77,
+          "end": 90,
+          "label": "KEY_TERM",
+          "score": 0.08683217187702516,
+          "text": "внешнего мира"
+        },
+        {
+          "start": 69,
+          "end": 90,
+          "label": "KEY_TERM",
+          "score": 0.08632550648632398,
+          "text": "явлений внешнего мира"
+        }
+      ]
+    },
+    {
+      "id": "human_round01_B",
+      "annotations": [
+        {
+          "start": 100,
+          "end": 111,
+          "label": "KEY_TERM",
+          "score": 0.13425451157148327,
+          "text": "проводников"
+        },
+        {
+          "start": 46,
+          "end": 68,
+          "label": "KEY_TERM",
+          "score": 0.10326079816356779,
+          "text": "нагревание проводников"
+        },
+        {
+          "start": 92,
+          "end": 111,
+          "label": "KEY_TERM",
+          "score": 0.10233030017075467,
+          "text": "состава проводников"
+        },
+        {
+          "start": 80,
+          "end": 111,
+          "label": "KEY_TERM",
+          "score": 0.09201445450195034,
+          "text": "химического состава проводников"
+        },
+        {
+          "start": 14,
+          "end": 33,
+          "label": "KEY_TERM",
+          "score": 0.08328242014125667,
+          "text": "ток имеет следующие"
+        }
+      ]
+    }
+  ]
+}

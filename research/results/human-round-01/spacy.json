@@ -1,0 +1,129 @@
+{
+  "name": "spacy",
+  "status": "ok",
+  "n": 2,
+  "split": "development",
+  "reference_policy": "Human selected spans; agent inferred category assignment from prompt scope. Not adjudicated final gold.",
+  "term_exact": {
+    "tp": 3,
+    "fp": 7,
+    "fn": 2,
+    "precision": 0.3,
+    "recall": 0.6,
+    "f1": 0.4,
+    "macro_f1": 0.4,
+    "per_category": {
+      "TERM": {
+        "tp": 3,
+        "fp": 7,
+        "fn": 2,
+        "precision": 0.3,
+        "recall": 0.6,
+        "f1": 0.4
+      }
+    },
+    "n": 2
+  },
+  "term_overlap": {
+    "tp": 4,
+    "fp": 6,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.8,
+    "f1": 0.5333333333333333,
+    "macro_f1": 0.5333333333333333,
+    "per_category": {
+      "TERM": {
+        "tp": 4,
+        "fp": 6,
+        "fn": 1,
+        "precision": 0.4,
+        "recall": 0.8,
+        "f1": 0.5333333333333333
+      }
+    },
+    "n": 2
+  },
+  "predictions": [
+    {
+      "id": "human_round01_A",
+      "annotations": [
+        {
+          "start": 0,
+          "end": 21,
+          "label": "DEFINITION_TERM",
+          "score": 0.95,
+          "text": "Математическая модель"
+        },
+        {
+          "start": 62,
+          "end": 76,
+          "label": "KEY_TERM",
+          "score": 0.74,
+          "text": "класса явлений"
+        },
+        {
+          "start": 69,
+          "end": 90,
+          "label": "KEY_TERM",
+          "score": 0.74,
+          "text": "явлений внешнего мира"
+        },
+        {
+          "start": 77,
+          "end": 90,
+          "label": "KEY_TERM",
+          "score": 0.74,
+          "text": "внешнего мира"
+        },
+        {
+          "start": 103,
+          "end": 128,
+          "label": "KEY_TERM",
+          "score": 0.74,
+          "text": "математическими символами"
+        }
+      ]
+    },
+    {
+      "id": "human_round01_B",
+      "annotations": [
+        {
+          "start": 80,
+          "end": 111,
+          "label": "KEY_TERM",
+          "score": 0.76,
+          "text": "химического состава проводников"
+        },
+        {
+          "start": 0,
+          "end": 17,
+          "label": "KEY_TERM",
+          "score": 0.74,
+          "text": "Электрический ток"
+        },
+        {
+          "start": 24,
+          "end": 44,
+          "label": "KEY_TERM",
+          "score": 0.74,
+          "text": "следующие проявления"
+        },
+        {
+          "start": 46,
+          "end": 68,
+          "label": "KEY_TERM",
+          "score": 0.74,
+          "text": "нагревание проводников"
+        },
+        {
+          "start": 70,
+          "end": 99,
+          "label": "KEY_TERM",
+          "score": 0.74,
+          "text": "изменение химического состава"
+        }
+      ]
+    }
+  ]
+}
