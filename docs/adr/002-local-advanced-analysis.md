@@ -1,6 +1,6 @@
 # ADR 002 — bounded local Advanced Analysis
 
-Status: implementation candidate; 2026-10-27. Release requires regression, resource and real-editor checks.
+Status: accepted for v0.2; 2026-10-27. Regression, resource and real-editor acceptance are recorded in [validation](../v02-validation.md).
 
 ## Evidence
 

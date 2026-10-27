@@ -1,6 +1,6 @@
 # Smart Notes v0.2 — validation record
 
-Date: 2026-10-27. Status: real-editor acceptance passed; final documentation/test CI pending before publication.
+Date: 2026-10-27. Status: code/editor acceptance complete. All 85 plugin tests and final-head CI passed; release metadata is 0.2.0.
 
 ## Decision and architecture
 
@@ -53,10 +53,14 @@ Opened a second tab containing 100,000 whitespace-delimited tokens (~836k UTF-16
 - Strict TypeScript and production esbuild passed; no separate linter configured.
 - 19 Python research tests passed; new quality evaluation checks every output substring/offset and records unchanged reference hashes.
 - Fresh frozen-lockfile dependency install passed in an isolated temporary folder. No new runtime dependencies.
-- Initial hosted push and PR CI passed at 775ce168. GitHub warned about Node20 actions, so actions are being pinned to official v6/Node24 revisions and Ubuntu 24.04; both updated hosted push/PR runs passed at a2d9024a with zero annotations. Sources: [checkout changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md), [setup-node documentation](https://github.com/actions/setup-node/blob/main/README.md). Final metadata/CI and tag publication follow this record. Previous v0.1.1-stable is preserved.
+- Initial hosted push and PR CI passed at 775ce168. GitHub warned about Node20 actions, so actions are being pinned to official v6/Node24 revisions and Ubuntu 24.04; both updated hosted push/PR runs passed at a2d9024a with zero annotations. Sources: [checkout changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md), [setup-node documentation](https://github.com/actions/setup-node/blob/main/README.md). Final-head push and PR CI passed at 2dd37c6037fab9de463fbb16202533ec3765e375 with zero annotations. The merged code tree is unchanged. Previous v0.1.1-stable is preserved.
 
 ## Reproduce
 
 Run pnpm test / build / package / bench:v02. Build the quality bridge with node scripts/prepare-v02.mjs, then NODE_BINARY=<node> research/.venv/bin/python research/evaluate_v02.py. Existing research environment is not required by the installed plugin.
 
 Package audit: exactly main.js (18,289 bytes), manifest.json (253) and styles.css (446), total 18,988 bytes. No model weights, environments, test vault notes or common GitHub/private-key credential patterns in tracked files. License remains unassigned by the owner; no new runtime dependency license is introduced.
+
+## Git and distribution
+
+Working branch: `feature/smart-notes-v0.2`. Preserved research base `0fcdd12`; logical implementation commits: ADR `68c2ed6`, engine/scheduler `a5bae8f`, lifecycle fixes `fb91a4f`, evaluation/package `775ce16`, modern CI `a2d9024`, final acceptance `2dd37c6`. [PR #2](https://github.com/tempo-wq/notes_auto_formatter/pull/2) merged without squashing into `164c1d6`; research history and `v0.1.1-stable` remain available. Release: [v0.2.0](https://github.com/tempo-wq/notes_auto_formatter/releases/tag/v0.2.0), three binary assets, no model download. This record describes validated behavior, not a claim that uninstrumented host timings or independent gold were measured.
