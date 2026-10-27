@@ -10,9 +10,11 @@ export interface Candidate extends Span {
     ruleId: string;
 }
 export type Profile = 'economy' | 'balanced' | 'active';
+export type NLPMode = 'rules' | 'automatic' | 'advanced';
 export interface Settings {
     profile: Profile;
+    nlpMode?: NLPMode;
     enabled: Record<HighlightType, boolean>;
 }
-export const defaults: Settings = { profile: 'balanced', enabled: { 'definition-term': true, important: true, example: true, 'key-term': true } };
+export const defaults: Settings = { profile: 'balanced', nlpMode: 'automatic', enabled: { 'definition-term': true, important: true, example: true, 'key-term': true } };
 export const profiles = { economy: { delay: 1200, max: 500 }, balanced: { delay: 500, max: 2000 }, active: { delay: 200, max: 4000 } };

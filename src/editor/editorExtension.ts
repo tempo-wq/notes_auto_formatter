@@ -1,8 +1,8 @@
 import { StateEffect, StateField, RangeSetBuilder } from '@codemirror/state';
 import { EditorView, ViewPlugin, ViewUpdate, Decoration, DecorationSet } from '@codemirror/view';
 import { syntaxTree, syntaxTreeAvailable, forceParsing } from '@codemirror/language';
-import { analyze } from '../analysis/RuleEngine';
-import { segment } from '../analysis/TextSegmenter';
+import { fastAnalysis, NLPManager } from '../analysis/NLPManager';
+import { mask } from '../analysis/NLPEngine';
 import { resolve } from '../analysis/HighlightResolver';
 import { Candidate, Settings, profiles } from '../analysis/types';
 import { protectedRanges } from './MarkdownContext';
@@ -28,15 +28,18 @@ export const highlights = StateField.define<Store>({
                 from: number;
                 to: number;
             }[] = [];
+            const contextDirty: { from: number; to: number }[] = [];
             tr.changes.iterChanges((a, b, c, d, inserted) => {
                 const oldLine = tr.startState.doc.lineAt(a);
                 const oldEnd = tr.startState.doc.lineAt(b);
+                // A neighboring line can supply context to an advanced result.
                 dirty.push({ from: oldLine.from, to: oldEnd.to });
+                contextDirty.push({ from: tr.startState.doc.line(Math.max(1, oldLine.number - 1)).from, to: tr.startState.doc.line(Math.min(tr.startState.doc.lines, oldEnd.number + 1)).to });
                 // Markup edits may alter the parser's interpretation of later blocks.
                 const removed = tr.startState.doc.sliceString(a, Math.min(b, a + 4096));
                 structural ||= b - a > 4096 || inserted.length > 4096 || /[`~$<>\n\r*_[\]#-]/.test(removed + inserted.sliceString(0, Math.min(4096, inserted.length)) + tr.startState.doc.sliceString(oldLine.from, Math.min(oldLine.from + 128, oldLine.to)));
             });
-            const items = structural ? [] : value.items.filter(c => !dirty.some(d => c.from <= d.to && c.to >= d.from)).map(c => ({ ...c, from: tr.changes.mapPos(c.from, 1), to: tr.changes.mapPos(c.to, -1) })).filter(c => c.from < c.to);
+            const items = structural ? [] : value.items.filter(c => !(c.ruleId === 'advanced.context-repeat' ? contextDirty : dirty).some(d => c.from <= d.to && c.to >= d.from)).map(c => ({ ...c, from: tr.changes.mapPos(c.from, 1), to: tr.changes.mapPos(c.to, -1) })).filter(c => c.from < c.to);
             value = { revision: value.revision + 1, items };
         }
         for (const effect of tr.effects) {
@@ -58,8 +61,10 @@ export interface Diagnostics {
     cacheHits: number;
     skippedLong: number;
     skippedUnparsed: number;
+    advanced?: number;
+    cancelled?: number;
 }
-export function editorExtension(getSettings: () => Settings, getIdentity: (view: EditorView) => unknown = () => null, stats: Diagnostics = { analyzed: 0, cacheHits: 0, skippedLong: 0, skippedUnparsed: 0 }) {
+export function editorExtension(getSettings: () => Settings, getIdentity: (view: EditorView) => unknown = () => null, stats: Diagnostics = { analyzed: 0, cacheHits: 0, skippedLong: 0, skippedUnparsed: 0 }, manager = new NLPManager()) {
     return [highlights, ViewPlugin.fromClass(class {
             decorations: DecorationSet = Decoration.none;
             timer: ReturnType<typeof setTimeout> | undefined;
@@ -68,12 +73,15 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
             identity: unknown;
             parsing = false;
             parseAttempts = 0;
+            abort = new AbortController();
             // Bounded per-editor content cache; coordinates stay local until application.
             cache = new Map<string, Candidate[]>();
             constructor(readonly view: EditorView) { this.identity = getIdentity(view); this.schedule(); }
             schedule(resetAttempts = true) {
                 if (resetAttempts) this.parseAttempts = 0;
                 clearTimeout(this.timer);
+                this.abort.abort();
+                this.abort = new AbortController();
                 const generation = ++this.generation;
                 this.timer = setTimeout(() => this.run(generation), profiles[getSettings().profile].delay);
             }
@@ -96,68 +104,89 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                 const state = this.view.state, revision = state.field(highlights).revision;
                 const identity = this.identity;
                 const settings = getSettings(), max = profiles[settings.profile].max;
-                // Lazy viewport analysis. No full-document copies or background vault scan.
-                const from = state.doc.lineAt(this.view.viewport.from).from;
+                // A finite neighborhood: visible lines first, then at most 128
+                // nearby lines, within the existing retained-range memory budget.
+                const first = state.doc.lineAt(this.view.viewport.from);
                 const last = state.doc.lineAt(this.view.viewport.to);
-                const to = last.to;
-                const jobs: {
-                    from: number;
-                    to: number;
-                }[] = [];
-                for (let pos = from; pos <= to;) {
-                    const line = state.doc.lineAt(pos);
-                    if (line.length <= max)
-                        jobs.push({ from: line.from, to: line.to });
-                    else
-                        stats.skippedLong++;
-                    // Oversized physical lines are skipped without scanning or truncation.
-                    if (line.to >= to)
-                        break;
-                    pos = line.to + 1;
+                const jobs: { from: number; to: number; background?: boolean }[] = [];
+                const add = (number: number, background = false) => {
+                    const line = state.doc.line(number);
+                    if (line.length <= max) jobs.push({ from: line.from, to: line.to, background });
+                    else stats.skippedLong++;
+                };
+                for (let n = first.number; n <= Math.min(last.number, first.number + 255); n++) add(n);
+                const visibleCount = jobs.length;
+                if (settings.nlpMode !== 'rules') {
+                    for (let distance = 1; distance <= 64; distance++) {
+                        const before = first.number - distance, after = last.number + distance;
+                        if (before >= 1 && state.doc.line(before).from >= first.from - 20000) add(before, true);
+                        if (after <= state.doc.lines && state.doc.line(after).to <= last.to + 20000) add(after, true);
+                    }
                 }
-                let index = 0;
-                const step = () => {
-                    if (this.destroyed || generation !== this.generation || this.view.state.field(highlights).revision !== revision || getIdentity(this.view) !== identity)
-                        return;
+                const signal = this.abort.signal;
+                const current = () => !this.destroyed && !signal.aborted && generation === this.generation &&
+                    this.view.state.field(highlights).revision === revision && getIdentity(this.view) === identity;
+                let index = 0, advanced = false;
+                const step = async () => {
+                    if (!current()) return;
                     const job = jobs[index++];
-                    if (!job)
-                        return;
-                    const blocked = protectedRanges(this.view.state, job.from, job.to);
+                    if (!job) return;
+                    const blocked = protectedRanges(state, job.from, job.to);
                     if (blocked) {
-                        const text = this.view.state.doc.sliceString(job.from, job.to);
-                        const key = JSON.stringify([text, blocked, settings]);
-                        let candidates = this.cache.get(key);
-                        if (candidates)
-                            stats.cacheHits++;
-                        if (!candidates) {
-                            stats.analyzed++;
-                            const all: Candidate[] = [];
-                            for (const s of segment(text, max))
-                                for (const c of analyze(text.slice(s.from, s.to)))
-                                    all.push({ ...c, from: c.from + s.from, to: c.to + s.from });
-                            stats.importantCandidates = (stats.importantCandidates ?? 0) + all.filter(c => c.type === "important").length;
-                            candidates = resolve(all, text.length, blocked, settings);
-                            stats.importantAccepted = (stats.importantAccepted ?? 0) + candidates.filter(c => c.type === "important").length;
-                            if (text.length <= max) {
-                                if (this.cache.size >= 128)
-                                    this.cache.delete(this.cache.keys().next().value!);
-                                this.cache.set(key, candidates);
+                        const text = state.doc.sliceString(job.from, job.to);
+                        let context = '';
+                        if (advanced) {
+                            const line = state.doc.lineAt(job.from);
+                            if (line.number > 1) {
+                                const previous = state.doc.line(line.number - 1);
+                                if (previous.length <= max && previous.text.trim()) {
+                                    const protectedContext = protectedRanges(state, previous.from, previous.to);
+                                    if (protectedContext) context = mask(previous.text, protectedContext);
+                                }
                             }
                         }
+                        // Context and stage are part of the key; no stale context reuse.
+                        const key = JSON.stringify([text, blocked, context, settings, advanced]);
+                        let candidates = this.cache.get(key);
+                        if (candidates) stats.cacheHits++;
+                        if (!candidates) {
+                            stats.analyzed++;
+                            const all = fastAnalysis(text, max);
+                            // Automatic waits for a sentence boundary; Advanced can
+                            // inspect unfinished paragraphs after the idle delay.
+                            if (advanced && (settings.nlpMode === 'advanced' || /[.!?:;]\s*$/.test(text))) {
+                                stats.advanced = (stats.advanced ?? 0) + 1;
+                                all.push(...await manager.advanced({ text, context, blocked, documentVersion: revision }, signal));
+                            }
+                            if (!current()) { stats.cancelled = (stats.cancelled ?? 0) + 1; return; }
+                            stats.importantCandidates = (stats.importantCandidates ?? 0) + all.filter(c => c.type === 'important').length;
+                            candidates = resolve(all, text.length, blocked, settings);
+                            stats.importantAccepted = (stats.importantAccepted ?? 0) + candidates.filter(c => c.type === 'important').length;
+                            if (this.cache.size >= 128) this.cache.delete(this.cache.keys().next().value!);
+                            this.cache.set(key, candidates);
+                        }
+                        if (!current()) return;
                         this.view.dispatch({ effects: apply.of({ revision, ...job, items: candidates.map(c => ({ ...c, from: c.from + job.from, to: c.to + job.from })) }) });
+                    } else stats.skippedUnparsed++;
+                    if (!advanced && index >= visibleCount) {
+                        if (settings.nlpMode === 'rules' || this.view.hasFocus === false) return;
+                        advanced = true;
+                        index = 0;
+                        // Separate idle phase; never advanced inference on the input path.
+                        this.timer = setTimeout(() => { void step(); }, Math.max(400, profiles[settings.profile].delay));
+                    } else if (index < jobs.length) {
+                        this.timer = setTimeout(() => { void step(); }, job.background ? 8 : 0);
                     }
-                    if (!blocked)
-                        stats.skippedUnparsed++;
-                    if (index < jobs.length)
-                        this.timer = setTimeout(step, 0);
                 };
-                step();
+                if (visibleCount) void step();
             }
+
             update(update: ViewUpdate) {
                 if (this.parsing) return;
                 if (getIdentity(this.view) !== this.identity) {
                     this.identity = getIdentity(this.view);
                     this.cache.clear();
+                    this.abort.abort();
                     ++this.generation;
                     clearTimeout(this.timer);
                     this.decorations = Decoration.none;
@@ -183,7 +212,7 @@ export function editorExtension(getSettings: () => Settings, getIdentity: (view:
                     }
                 this.decorations = builder.finish();
             }
-            destroy() { this.destroyed = true; ++this.generation; clearTimeout(this.timer); this.cache.clear(); }
+            destroy() { this.abort.abort(); this.destroyed = true; ++this.generation; clearTimeout(this.timer); this.cache.clear(); }
         }, { decorations: p => p.decorations })];
 }
 export function resetAnalysis(view: EditorView) { view.dispatch({ effects: reset.of(null) }); }

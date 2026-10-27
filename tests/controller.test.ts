@@ -4,17 +4,18 @@ import { EditorView, ViewUpdate, DecorationSet } from '@codemirror/view';
 import { markdown } from '@codemirror/lang-markdown';
 import { ensureSyntaxTree } from '@codemirror/language';
 import { editorExtension, highlights, Diagnostics } from '../src/editor/editorExtension';
-import { defaults } from '../src/analysis/types';
+import { NLPManager } from '../src/analysis/NLPManager';
+import { defaults, Settings } from '../src/analysis/types';
 // Runs the real controller and CodeMirror state with a simulated viewport,
 // without claiming to exercise browser layout or Obsidian's host parser.
-function harness(text: string, options: { unparsed?: boolean; from?: number; identity?: string } = {}) {
+function harness(text: string, options: { unparsed?: boolean; from?: number; identity?: string; to?: number; settings?: Settings; manager?: NLPManager } = {}) {
     vi.useFakeTimers();
     const stats: Diagnostics = { analyzed: 0, cacheHits: 0, skippedLong: 0, skippedUnparsed: 0 };
     let identity = options.identity ?? 'test';
-    const extensions = editorExtension(() => defaults, () => identity, stats);
+    const extensions = editorExtension(() => options.settings ?? defaults, () => identity, stats, options.manager);
     let state = EditorState.create({ doc: text, extensions: [highlights, markdown()] });
     if (!options.unparsed) ensureSyntaxTree(state, state.doc.length, 100);
-    let viewport = { from: options.from ?? 0, to: state.doc.length };
+    let viewport = { from: options.from ?? 0, to: options.to ?? state.doc.length };
     let controller: {
         update(u: ViewUpdate): void;
         destroy(): void;
@@ -117,4 +118,48 @@ it('can reopen the same contents and isolate concurrent editors', async () => {
     expect(b.view.state.field(highlights).items).toHaveLength(1);
     expect(reopened.view.state.field(highlights).items).toHaveLength(1);
     b.controller.destroy(); reopened.controller.destroy();
+});
+
+it('runs advanced after fast and returns to an idle state', async () => {
+    const h=harness('Рекурсия — определение через самого себя.');
+    await vi.advanceTimersByTimeAsync(700);
+    expect(h.view.state.field(highlights).items).toEqual([]);
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(h.view.state.field(highlights).items[0].ruleId).toMatch(/^advanced/);
+    await vi.advanceTimersByTimeAsync(30000);
+    expect(vi.getTimerCount()).toBe(0); h.controller.destroy();
+});
+it('never initializes advanced in Rules Only', async () => {
+    const create=vi.fn(()=>{throw Error('must not initialize');});
+    const h=harness('Рекурсия — определение через самого себя.',{settings:{...defaults,nlpMode:'rules'},manager:new NLPManager(create)});
+    await vi.advanceTimersByTimeAsync(5000);
+    expect(create).not.toHaveBeenCalled(); expect(h.stats.advanced ?? 0).toBe(0);
+    expect(vi.getTimerCount()).toBe(0); h.controller.destroy();
+});
+it('rejects a delayed advanced response after editing or closing', async () => {
+    let finish: (value: [])=>void = ()=>{};
+    const manager=new NLPManager(()=>({initialize:async()=>{},analyze:()=>new Promise<[]>(r=>{finish=r;}),dispose:async()=>{}}));
+    const h=harness('Рекурсия — определение через самого себя.',{manager});
+    await vi.advanceTimersByTimeAsync(1100);
+    h.view.dispatch({changes:{from:0,to:h.view.state.doc.length,insert:'Новый текст.'}});
+    finish([]); await vi.advanceTimersByTimeAsync(2000);
+    expect(h.view.state.field(highlights).items).toEqual([]);
+    h.controller.destroy(); await manager.dispose(); finish([]);
+    await vi.advanceTimersByTimeAsync(10000); expect(vi.getTimerCount()).toBe(0);
+});
+it('includes safe neighboring context and invalidates it when the definition changes', async () => {
+    const text='Градиентный спуск — алгоритм оптимизации.\nГрадиентный спуск изменяет параметры.';
+    const h=harness(text); await vi.advanceTimersByTimeAsync(2000);
+    expect(h.view.state.field(highlights).items.map(c=>c.type)).toEqual(['definition-term','key-term']);
+    h.view.dispatch({changes:{from:18,to:19,insert:','}});
+    expect(h.view.state.field(highlights).items).toEqual([]);
+    await vi.advanceTimersByTimeAsync(2000);
+    expect(h.view.state.field(highlights).items).toEqual([]); h.controller.destroy();
+});
+it('progresses beyond the visible lines within a bounded finite neighborhood', async () => {
+    const text='Обычное пояснение.\n\nРекурсия — определение через самого себя.';
+    const h=harness(text,{to:17}); await vi.advanceTimersByTimeAsync(3000);
+    expect(h.view.state.field(highlights).items.some(c=>c.from===text.indexOf('Рекурсия'))).toBe(true);
+    expect(h.controller.decorations.size).toBe(0);
+    expect(vi.getTimerCount()).toBe(0); h.controller.destroy();
 });
