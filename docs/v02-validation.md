@@ -1,6 +1,6 @@
 # Smart Notes v0.2 — validation record
 
-Date: 2026-10-27. Status: release candidate; CI and final large-note parser-budget check pending.
+Date: 2026-10-27. Status: real-editor acceptance passed; final documentation/test CI pending before publication.
 
 ## Decision and architecture
 
@@ -45,16 +45,18 @@ Installed files: main.js + manifest.json + styles.css, approximately 19 KB combi
 
 Obsidian 1.14.5, test-vault only. Replaced the three plugin files with backups in /tmp; disable/enable actually reloads code, list refresh alone is insufficient. Opened an existing synthetic note: all requested definition constructions, nearby contextual underline, capped enumeration, important markers and examples appeared. Added and completed a new definition, observed highlight, exercised Undo/Redo, then removed only the synthetic addition. Inline code, fenced code, inline/block formulas and existing emphasis were visually protected.
 
-Opened a second tab containing 100,000 whitespace-delimited tokens (~836k UTF-16 characters, Obsidian counts 92,861 words because punctuation-only tokens differ). Jumped to end: initial budget was insufficient; Reanalyze current note completed and highlighted the last term. Final increased finite parse budget still requires a fresh real-editor check. Both synthetic notes match their original SHA-256 after editing/recovery; user notes were not changed. Existing v0.1.1 real validation remains in research/reports/stable-validation.md.
+Opened a second tab containing 100,000 whitespace-delimited tokens (~836k UTF-16 characters, Obsidian counts 92,861 words because punctuation-only tokens differ). Jumped to end: initial budget was insufficient; Reanalyze current note completed and highlighted the last term. With the final increased finite parse budget, a fresh copy of the large document was opened, jumped to the end, and automatically highlighted the last term without the command. Rules Only was selected and saved through the UI: advanced definitions/context/enumerations disappeared while fast rules remained. Advanced was selected and saved; Automatic was restored. Source mode and Live Preview were both exercised; multiple tabs remained independent. All three synthetic notes match their original SHA-256 after editing/recovery; user notes were not changed. Existing v0.1.1 real validation remains in research/reports/stable-validation.md.
 
 ## Automated checks and release gate
 
-- 83 Vitest tests passed: original 46 regressions plus new definition/negative/context/protection/cancellation/failure/idle/burst/paste/geometry tests. Controller tests simulate viewport and do not claim real browser layout.
+- 85 Vitest tests passed: original 46 regressions plus new definition/negative/context/protection/cancellation/failure/idle/burst/paste/geometry and unfinished-input mode tests. Controller tests simulate viewport and do not claim real browser layout.
 - Strict TypeScript and production esbuild passed; no separate linter configured.
 - 19 Python research tests passed; new quality evaluation checks every output substring/offset and records unchanged reference hashes.
 - Fresh frozen-lockfile dependency install passed in an isolated temporary folder. No new runtime dependencies.
-- Initial hosted push and PR CI passed at 775ce168. GitHub warned about Node20 actions, so actions are being pinned to official v6/Node24 revisions and Ubuntu 24.04; the updated run is pending. Sources: [checkout changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md), [setup-node documentation](https://github.com/actions/setup-node/blob/main/README.md). No stable tag/release yet. Previous v0.1.1-stable is preserved.
+- Initial hosted push and PR CI passed at 775ce168. GitHub warned about Node20 actions, so actions are being pinned to official v6/Node24 revisions and Ubuntu 24.04; both updated hosted push/PR runs passed at a2d9024a with zero annotations. Sources: [checkout changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md), [setup-node documentation](https://github.com/actions/setup-node/blob/main/README.md). Final metadata/CI and tag publication follow this record. Previous v0.1.1-stable is preserved.
 
 ## Reproduce
 
 Run pnpm test / build / package / bench:v02. Build the quality bridge with node scripts/prepare-v02.mjs, then NODE_BINARY=<node> research/.venv/bin/python research/evaluate_v02.py. Existing research environment is not required by the installed plugin.
+
+Package audit: exactly main.js (18,289 bytes), manifest.json (253) and styles.css (446), total 18,988 bytes. No model weights, environments, test vault notes or common GitHub/private-key credential patterns in tracked files. License remains unassigned by the owner; no new runtime dependency license is introduced.

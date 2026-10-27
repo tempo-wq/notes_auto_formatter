@@ -184,3 +184,9 @@ it('coalesces rapid typing and a large paste without document-sized queues', asy
     expect(h.view.state.field(highlights).items.length).toBeLessThanOrEqual(2048);
     expect(vi.getTimerCount()).toBe(0); h.controller.destroy();
 });
+it.each([['automatic',0],['advanced',1]] as const)('applies %s policy to unfinished input', async (nlpMode,count) => {
+    const h=harness('Градиентный спуск — алгоритм оптимизации',{settings:{...defaults,nlpMode}});
+    await vi.advanceTimersByTimeAsync(2500);
+    expect(h.view.state.field(highlights).items).toHaveLength(count);
+    expect(vi.getTimerCount()).toBe(0); h.controller.destroy();
+});
