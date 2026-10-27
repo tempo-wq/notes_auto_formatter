@@ -1,0 +1,29 @@
+{
+  "original_fragments": 98,
+  "decisions": 98,
+  "excluded_original_fragments": 25,
+  "derived_clean_prefixes": 1,
+  "reviewed_examples": 74,
+  "words": 9816,
+  "negative_examples": 4,
+  "label_counts": {
+    "DEFINITION_TERM": 64,
+    "DEFINITION": 64,
+    "IMPORTANT": 70,
+    "KEY_TERM": 121,
+    "EXAMPLE": 23
+  },
+  "by_split": {
+    "development": 54,
+    "test": 20
+  },
+  "by_topic": {
+    "math": 9,
+    "physics": 13,
+    "programming": 14,
+    "biology": 15,
+    "history": 15,
+    "mixed": 8
+  },
+  "primary_gold_available": false
+}

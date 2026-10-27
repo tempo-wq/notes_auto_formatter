@@ -1,0 +1,225 @@
+{
+  "name": "textrank4",
+  "status": "ok",
+  "primary_gold_available": false,
+  "policy": "expanded-v1; single-agent preference annotations, not independent gold; no parameter fitting",
+  "reference_sha256": {
+    "development": "2ad87f3146eb68f96dbc2922d6391af9ed9411661e4e60c7cf8cfbea3f3a4ebc",
+    "test": "9af0fc48b7ffcaadee1ccb7d46e64d4b1165b739b8d8aae99246bf26ad39281f"
+  },
+  "quality": {
+    "development": {
+      "term_exact": {
+        "tp": 13,
+        "fp": 257,
+        "fn": 123,
+        "precision": 0.04814814814814815,
+        "recall": 0.09558823529411764,
+        "f1": 0.06403940886699508,
+        "macro_f1": 0.06403940886699508,
+        "per_category": {
+          "TERM": {
+            "tp": 13,
+            "fp": 257,
+            "fn": 123,
+            "precision": 0.04814814814814815,
+            "recall": 0.09558823529411764,
+            "f1": 0.06403940886699508
+          }
+        },
+        "n": 54
+      },
+      "term_overlap": {
+        "tp": 25,
+        "fp": 245,
+        "fn": 111,
+        "precision": 0.09259259259259259,
+        "recall": 0.18382352941176472,
+        "f1": 0.12315270935960591,
+        "macro_f1": 0.12315270935960591,
+        "per_category": {
+          "TERM": {
+            "tp": 25,
+            "fp": 245,
+            "fn": 111,
+            "precision": 0.09259259259259259,
+            "recall": 0.18382352941176472,
+            "f1": 0.12315270935960591
+          }
+        },
+        "n": 54
+      },
+      "taxonomy_diagnostic": {
+        "tp": 4,
+        "fp": 266,
+        "fn": 245,
+        "precision": 0.014814814814814815,
+        "recall": 0.01606425702811245,
+        "f1": 0.015414258188824663,
+        "macro_f1": 0.00446927374301676,
+        "per_category": {
+          "DEFINITION_TERM": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 48,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "DEFINITION": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 48,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "IMPORTANT": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 50,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "EXAMPLE": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 15,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "KEY_TERM": {
+            "tp": 4,
+            "fp": 266,
+            "fn": 84,
+            "precision": 0.014814814814814815,
+            "recall": 0.045454545454545456,
+            "f1": 0.0223463687150838
+          }
+        },
+        "n": 54
+      },
+      "negatives": {
+        "n": 4,
+        "with_any_highlight": 4,
+        "predicted_spans": 20
+      },
+      "coverage": {
+        "definition_body": "unsupported by all current adapters; not a competing task",
+        "important_example": "only baseline and rule_* hybrids support these categories",
+        "common_comparison": "TERM = DEFINITION_TERM + KEY_TERM"
+      }
+    },
+    "test": {
+      "term_exact": {
+        "tp": 5,
+        "fp": 95,
+        "fn": 44,
+        "precision": 0.05,
+        "recall": 0.10204081632653061,
+        "f1": 0.06711409395973154,
+        "macro_f1": 0.06711409395973154,
+        "per_category": {
+          "TERM": {
+            "tp": 5,
+            "fp": 95,
+            "fn": 44,
+            "precision": 0.05,
+            "recall": 0.10204081632653061,
+            "f1": 0.06711409395973154
+          }
+        },
+        "n": 20
+      },
+      "term_overlap": {
+        "tp": 11,
+        "fp": 89,
+        "fn": 38,
+        "precision": 0.11,
+        "recall": 0.22448979591836735,
+        "f1": 0.1476510067114094,
+        "macro_f1": 0.1476510067114094,
+        "per_category": {
+          "TERM": {
+            "tp": 11,
+            "fp": 89,
+            "fn": 38,
+            "precision": 0.11,
+            "recall": 0.22448979591836735,
+            "f1": 0.1476510067114094
+          }
+        },
+        "n": 20
+      },
+      "taxonomy_diagnostic": {
+        "tp": 5,
+        "fp": 95,
+        "fn": 88,
+        "precision": 0.05,
+        "recall": 0.053763440860215055,
+        "f1": 0.05181347150259067,
+        "macro_f1": 0.015037593984962405,
+        "per_category": {
+          "DEFINITION_TERM": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 16,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "DEFINITION": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 16,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "IMPORTANT": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 20,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "EXAMPLE": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 8,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "KEY_TERM": {
+            "tp": 5,
+            "fp": 95,
+            "fn": 28,
+            "precision": 0.05,
+            "recall": 0.15151515151515152,
+            "f1": 0.07518796992481203
+          }
+        },
+        "n": 20
+      },
+      "negatives": {
+        "n": 0,
+        "with_any_highlight": 0,
+        "predicted_spans": 0
+      },
+      "coverage": {
+        "definition_body": "unsupported by all current adapters; not a competing task",
+        "important_example": "only baseline and rule_* hybrids support these categories",
+        "common_comparison": "TERM = DEFINITION_TERM + KEY_TERM"
+      },
+      "source_bootstrap_term_f1_95": [
+        0.024242424242424242,
+        0.1509433962264151
+      ],
+      "n_source_documents": 6
+    }
+  }
+}

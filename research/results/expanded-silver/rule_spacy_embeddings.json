@@ -1,0 +1,225 @@
+{
+  "name": "rule_spacy_embeddings",
+  "status": "ok",
+  "primary_gold_available": false,
+  "policy": "expanded-v1; single-agent preference annotations, not independent gold; no parameter fitting",
+  "reference_sha256": {
+    "development": "2ad87f3146eb68f96dbc2922d6391af9ed9411661e4e60c7cf8cfbea3f3a4ebc",
+    "test": "9af0fc48b7ffcaadee1ccb7d46e64d4b1165b739b8d8aae99246bf26ad39281f"
+  },
+  "quality": {
+    "development": {
+      "term_exact": {
+        "tp": 33,
+        "fp": 237,
+        "fn": 103,
+        "precision": 0.12222222222222222,
+        "recall": 0.2426470588235294,
+        "f1": 0.1625615763546798,
+        "macro_f1": 0.1625615763546798,
+        "per_category": {
+          "TERM": {
+            "tp": 33,
+            "fp": 237,
+            "fn": 103,
+            "precision": 0.12222222222222222,
+            "recall": 0.2426470588235294,
+            "f1": 0.1625615763546798
+          }
+        },
+        "n": 54
+      },
+      "term_overlap": {
+        "tp": 47,
+        "fp": 223,
+        "fn": 89,
+        "precision": 0.17407407407407408,
+        "recall": 0.34558823529411764,
+        "f1": 0.2315270935960591,
+        "macro_f1": 0.2315270935960591,
+        "per_category": {
+          "TERM": {
+            "tp": 47,
+            "fp": 223,
+            "fn": 89,
+            "precision": 0.17407407407407408,
+            "recall": 0.34558823529411764,
+            "f1": 0.2315270935960591
+          }
+        },
+        "n": 54
+      },
+      "taxonomy_diagnostic": {
+        "tp": 15,
+        "fp": 259,
+        "fn": 234,
+        "precision": 0.05474452554744526,
+        "recall": 0.060240963855421686,
+        "f1": 0.05736137667304015,
+        "macro_f1": 0.10626853667119088,
+        "per_category": {
+          "DEFINITION_TERM": {
+            "tp": 5,
+            "fp": 4,
+            "fn": 43,
+            "precision": 0.5555555555555556,
+            "recall": 0.10416666666666667,
+            "f1": 0.17543859649122806
+          },
+          "DEFINITION": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 48,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "IMPORTANT": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 50,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "EXAMPLE": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 12,
+            "precision": 0.75,
+            "recall": 0.2,
+            "f1": 0.3157894736842105
+          },
+          "KEY_TERM": {
+            "tp": 7,
+            "fp": 254,
+            "fn": 81,
+            "precision": 0.02681992337164751,
+            "recall": 0.07954545454545454,
+            "f1": 0.04011461318051576
+          }
+        },
+        "n": 54
+      },
+      "negatives": {
+        "n": 4,
+        "with_any_highlight": 4,
+        "predicted_spans": 20
+      },
+      "coverage": {
+        "definition_body": "unsupported by all current adapters; not a competing task",
+        "important_example": "only baseline and rule_* hybrids support these categories",
+        "common_comparison": "TERM = DEFINITION_TERM + KEY_TERM"
+      }
+    },
+    "test": {
+      "term_exact": {
+        "tp": 9,
+        "fp": 84,
+        "fn": 40,
+        "precision": 0.0967741935483871,
+        "recall": 0.1836734693877551,
+        "f1": 0.1267605633802817,
+        "macro_f1": 0.1267605633802817,
+        "per_category": {
+          "TERM": {
+            "tp": 9,
+            "fp": 84,
+            "fn": 40,
+            "precision": 0.0967741935483871,
+            "recall": 0.1836734693877551,
+            "f1": 0.1267605633802817
+          }
+        },
+        "n": 20
+      },
+      "term_overlap": {
+        "tp": 14,
+        "fp": 79,
+        "fn": 35,
+        "precision": 0.15053763440860216,
+        "recall": 0.2857142857142857,
+        "f1": 0.19718309859154928,
+        "macro_f1": 0.19718309859154928,
+        "per_category": {
+          "TERM": {
+            "tp": 14,
+            "fp": 79,
+            "fn": 35,
+            "precision": 0.15053763440860216,
+            "recall": 0.2857142857142857,
+            "f1": 0.19718309859154928
+          }
+        },
+        "n": 20
+      },
+      "taxonomy_diagnostic": {
+        "tp": 3,
+        "fp": 91,
+        "fn": 90,
+        "precision": 0.031914893617021274,
+        "recall": 0.03225806451612903,
+        "f1": 0.03208556149732621,
+        "macro_f1": 0.00967741935483871,
+        "per_category": {
+          "DEFINITION_TERM": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 16,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "DEFINITION": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 16,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "IMPORTANT": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 20,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "EXAMPLE": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "KEY_TERM": {
+            "tp": 3,
+            "fp": 88,
+            "fn": 30,
+            "precision": 0.03296703296703297,
+            "recall": 0.09090909090909091,
+            "f1": 0.04838709677419355
+          }
+        },
+        "n": 20
+      },
+      "negatives": {
+        "n": 0,
+        "with_any_highlight": 0,
+        "predicted_spans": 0
+      },
+      "coverage": {
+        "definition_body": "unsupported by all current adapters; not a competing task",
+        "important_example": "only baseline and rule_* hybrids support these categories",
+        "common_comparison": "TERM = DEFINITION_TERM + KEY_TERM"
+      },
+      "source_bootstrap_term_f1_95": [
+        0.05128205128205128,
+        0.19393939393939394
+      ],
+      "n_source_documents": 6
+    }
+  }
+}

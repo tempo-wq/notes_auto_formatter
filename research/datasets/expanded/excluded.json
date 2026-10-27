@@ -1,0 +1,177 @@
+[
+  {
+    "id": "wiki_20446_2",
+    "source_id": "wiki_20446",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "ffe8ed67ba75c10612e8da84a146d83313ddba2661582719f808d2e3c56538c6"
+  },
+  {
+    "id": "wiki_20446_3",
+    "source_id": "wiki_20446",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "dba122cdca42248f0905e52877cf859c9d73181e2d1435adc10228fa0b16981d"
+  },
+  {
+    "id": "wiki_20446_4",
+    "source_id": "wiki_20446",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "8a809c2e72e83ddd6b170213446d9aa676f6ea06dbe42c70619b8c20e1be4e18"
+  },
+  {
+    "id": "wiki_20446_5",
+    "source_id": "wiki_20446",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "bba89e3bdb55fb11349c887988867a96c6f42e613dec034719a30c0039f2ad92"
+  },
+  {
+    "id": "wiki_25898_2",
+    "source_id": "wiki_25898",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "304157ac5a922c97994053f99ac9f6dd134c64659e0e2a1dba5c9a60082fdc8b"
+  },
+  {
+    "id": "wiki_25898_3",
+    "source_id": "wiki_25898",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "686dfd410e52e24df8f393162c0d0abadd64ed85bff71c1a481f6021d522b362"
+  },
+  {
+    "id": "wiki_25898_5",
+    "source_id": "wiki_25898",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "cdeb6e9c2b62c4bbfd0fd13ab1003aad5863f8e6217b576e9ab3809079702d7b"
+  },
+  {
+    "id": "wiki_29983_4",
+    "source_id": "wiki_29983",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "c43f6a0965a2595f6803e56f1ad8dd12f945d8a1033a8925b4b76bbd0e6f0052"
+  },
+  {
+    "id": "wiki_29983_5",
+    "source_id": "wiki_29983",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "31e25b1b7e3700f040f23b0b129f4465a1977619e92cce31b157ec01fa6adfa3"
+  },
+  {
+    "id": "wiki_5681_3",
+    "source_id": "wiki_5681",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "cee65d54362fb31723ceb3545fc2c6012b4ab3de36153edd02ce24fd47301627"
+  },
+  {
+    "id": "wiki_5681_4",
+    "source_id": "wiki_5681",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "7f434c5aaf51f88219cd835fc5804db6ab94db067eabbdc828c4c44ec06001ac"
+  },
+  {
+    "id": "wiki_5681_5",
+    "source_id": "wiki_5681",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "be9eface8fe3db3dc01ef2f7a8ea6404f0eb79311aebf8965614f547ca1abe62"
+  },
+  {
+    "id": "wiki_293181_3",
+    "source_id": "wiki_293181",
+    "split": "development",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "4efe963e637e99dbc18930a3c9946325efa52fe2dd468950e3beea3806ae0e5d"
+  },
+  {
+    "id": "wiki_293181_4",
+    "source_id": "wiki_293181",
+    "split": "development",
+    "reason": "fragment starts inside a word after corrupted formula extraction; do not treat as a negative example",
+    "text_sha256": "b6e7668cafb27a27ef928b218419c49176498ba6034c6323f5c9f149d0ae44a5"
+  },
+  {
+    "id": "wiki_365821_1",
+    "source_id": "wiki_365821",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "12f88f3e1f602bbe293eeafa6d095c7293ba24ce241fd12aabc7c8388ad796db"
+  },
+  {
+    "id": "wiki_365821_2",
+    "source_id": "wiki_365821",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "6654747cc56517ec775ac2b24f40e54bb2361997733c4e5e36ab79546485a9d0"
+  },
+  {
+    "id": "wiki_365821_3",
+    "source_id": "wiki_365821",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "47697f0c377ced168e146f791afc23391fe8676e85c795e902c8499e2617380e"
+  },
+  {
+    "id": "wiki_365821_4",
+    "source_id": "wiki_365821",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "54582f444085f9981c570387e42927745c2f1a25dde8e924d187f036dd32cfa9"
+  },
+  {
+    "id": "wiki_365821_5",
+    "source_id": "wiki_365821",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "d9e6faf1806b8b6f8aeb8f8e617b09b78e1f58deea24661002feeb4a5a75a111"
+  },
+  {
+    "id": "wiki_42280_4",
+    "source_id": "wiki_42280",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "1eed44e894314ebd551af34578812fb451714ec4dd1eee0fa78c30b0d119691c"
+  },
+  {
+    "id": "wiki_42280_5",
+    "source_id": "wiki_42280",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "a49a7f94d47836a6915b2d5dc271e7d31d8cb2caebdd4abc6a10f71ec809d516"
+  },
+  {
+    "id": "wiki_10685_2",
+    "source_id": "wiki_10685",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "b2115bf6e3e1b87c72dad342dc62098ddd2b031c8708cf5207074a5731c6ae48"
+  },
+  {
+    "id": "wiki_10685_3",
+    "source_id": "wiki_10685",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "fe9941260cbb87b15d62950d2ac04b77ba1bf6f8254cefd00dd1fc21db18d5a5"
+  },
+  {
+    "id": "wiki_10685_4",
+    "source_id": "wiki_10685",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "8974349c1dba1e8cf7f28066dd73e91e4d50c83e51d4863c7c1d61287fd1a59f"
+  },
+  {
+    "id": "wiki_10685_5",
+    "source_id": "wiki_10685",
+    "split": "test",
+    "reason": "MediaWiki extraction duplicated/rendered math as fragmented symbols plus raw displaystyle; not reliable prose for this comparison",
+    "text_sha256": "fe716011557540e6adfb205097146bce4acd105dffd1647bee887aa08c661cc4"
+  }
+]
