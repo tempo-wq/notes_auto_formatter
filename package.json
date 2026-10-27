@@ -1,11 +1,13 @@
 {
   "name": "smart-notes",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "build": "tsc --noEmit && node esbuild.config.mjs",
     "test": "vitest run",
-    "bench": "node scripts/run-benchmark.mjs"
+    "bench": "node scripts/run-benchmark.mjs",
+    "package": "node scripts/package-release.mjs",
+    "bench:v02": "node scripts/run-v02-performance.mjs"
   },
   "devDependencies": {
     "@codemirror/language": "^6.11.0",

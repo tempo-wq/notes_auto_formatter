@@ -1,0 +1,54 @@
+{"id": "wiki_20446_1", "annotations": [{"start": 506, "end": 536, "label": "DEFINITION_TERM", "text": "Процесс вычисления производной"}]}
+{"id": "wiki_25898_1", "annotations": []}
+{"id": "wiki_25898_4", "annotations": [{"start": 707, "end": 714, "label": "KEY_TERM", "text": "матрица"}]}
+{"id": "wiki_1900_1", "annotations": []}
+{"id": "wiki_1900_2", "annotations": []}
+{"id": "wiki_1900_3", "annotations": []}
+{"id": "wiki_1900_4", "annotations": []}
+{"id": "wiki_1900_5", "annotations": []}
+{"id": "wiki_29983_1", "annotations": []}
+{"id": "wiki_29983_2", "annotations": []}
+{"id": "wiki_29983_3", "annotations": []}
+{"id": "wiki_5681_1", "annotations": []}
+{"id": "wiki_5681_2", "annotations": [{"start": 795, "end": 799, "label": "KEY_TERM", "text": "тело"}, {"start": 828, "end": 846, "label": "KEY_TERM", "text": "материальная точка"}]}
+{"id": "wiki_186974_1", "annotations": []}
+{"id": "wiki_186974_2", "annotations": []}
+{"id": "wiki_186974_3", "annotations": []}
+{"id": "wiki_186974_4", "annotations": []}
+{"id": "wiki_186974_5", "annotations": []}
+{"id": "wiki_2741_1", "annotations": []}
+{"id": "wiki_2741_2", "annotations": []}
+{"id": "wiki_2741_3", "annotations": []}
+{"id": "wiki_2741_4", "annotations": []}
+{"id": "wiki_2741_5", "annotations": []}
+{"id": "wiki_7841_1", "annotations": []}
+{"id": "wiki_7841_2", "annotations": [{"start": 474, "end": 486, "label": "DEFINITION_TERM", "text": "инкапсуляция"}]}
+{"id": "wiki_7841_3", "annotations": [{"start": 0, "end": 11, "label": "DEFINITION_TERM", "text": "модульность"}, {"start": 580, "end": 589, "label": "DEFINITION_TERM", "text": "типизация"}, {"start": 921, "end": 932, "label": "DEFINITION_TERM", "text": "параллелизм"}]}
+{"id": "wiki_7841_4", "annotations": [{"start": 0, "end": 13, "label": "DEFINITION_TERM", "text": "сохраняемость"}]}
+{"id": "wiki_7841_5", "annotations": []}
+{"id": "wiki_201799_1", "annotations": [{"start": 297, "end": 313, "label": "KEY_TERM", "text": "структура данных"}, {"start": 988, "end": 1211, "label": "EXAMPLE", "text": "Например, B-деревья обычно подходят для создания баз данных, в то время как хеш-таблицы используются повсеместно для создания различного рода словарей, например, для отображения доменных имён в интернет-адресах компьютеров."}]}
+{"id": "wiki_201799_2", "annotations": [{"start": 735, "end": 842, "label": "EXAMPLE", "text": "Например, структура данных хеш-таблица встроена в языки программирования Lua, Perl, Python, Ruby, Tcl и др."}, {"start": 1092, "end": 1250, "label": "EXAMPLE", "text": "Например, двусвязный список может быть построен с помощью записей и ссылок, где каждая запись (узел) будет хранить данные и ссылки на «левый» и «правый» узлы."}]}
+{"id": "wiki_201799_3", "annotations": []}
+{"id": "wiki_164924_1", "annotations": []}
+{"id": "wiki_164924_2", "annotations": []}
+{"id": "wiki_164924_3", "annotations": []}
+{"id": "wiki_164924_4", "annotations": []}
+{"id": "wiki_164924_5", "annotations": []}
+{"id": "wiki_36616_1", "annotations": [{"start": 673, "end": 691, "label": "KEY_TERM", "text": "Естественный отбор"}]}
+{"id": "wiki_36616_2", "annotations": [{"start": 1288, "end": 1474, "label": "EXAMPLE", "text": "Например, если потомки успешного и быстро размножающегося организма слабые и плохо размножаются, то генетический вклад и, соответственно, приспособленность этого организма будут низкими."}]}
+{"id": "wiki_36616_3", "annotations": []}
+{"id": "wiki_36616_4", "annotations": []}
+{"id": "wiki_36616_5", "annotations": []}
+{"id": "wiki_94341_1", "annotations": []}
+{"id": "wiki_94341_2", "annotations": []}
+{"id": "wiki_94341_3", "annotations": []}
+{"id": "wiki_94341_4", "annotations": []}
+{"id": "wiki_94341_5", "annotations": []}
+{"id": "wiki_3024868_1", "annotations": []}
+{"id": "wiki_3024868_2", "annotations": []}
+{"id": "wiki_3024868_3", "annotations": []}
+{"id": "wiki_3024868_4", "annotations": []}
+{"id": "wiki_3024868_5", "annotations": []}
+{"id": "wiki_293181_1", "annotations": []}
+{"id": "wiki_293181_2", "annotations": [{"start": 0, "end": 21, "label": "DEFINITION_TERM", "text": "Математическая модель"}]}
+{"id": "wiki_293181_5", "annotations": []}
